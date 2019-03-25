@@ -29,7 +29,7 @@
 
         <div class="container">
             <div class="card card-login mx-auto mt-5">
-                <div class="card-header">Login</div>
+                <div class="card-header">${mensajes["login"]}</div>
                 <div class="card-body">
                     <form>
                         <div class="form-group">

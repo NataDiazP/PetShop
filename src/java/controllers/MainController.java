@@ -16,7 +16,7 @@ import util.Mensajes;
 public class MainController extends HttpServlet {
 
     public static void setMessages(HttpServletRequest request) {
-        request.setAttribute("messages", Mensajes.mensajes);
+        request.setAttribute("mensajes", Mensajes.mensajes);
     }
 
 }
