@@ -1,4 +1,4 @@
-package petshop;
+package models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,21 +15,20 @@ public class Producto {
     private String descripcion;
     private float valor;
     private int cantidad_inventario;
-    private List<PedidosProducto> lista_pedidos_producto;
+    private List<PedidoProducto> lista_pedidos_producto;
     private List<Comentario> lista_comentarios;
-    
-    public Producto(){
-        
-        this.id = Producto.contador_ids + 1;
-        this.nombre = "";
-        this.descripcion = "";
-        this.valor = 0;
-        this.cantidad_inventario = 0;
-        this.lista_pedidos_producto = new ArrayList<PedidosProducto>();
-        this.lista_comentarios = new ArrayList<Comentario>();
-      
-    }
 
+    public Producto(String nombre, String descripcion, float valor, int cantidad_inventario, List<PedidoProducto> lista_pedidos_producto, List<Comentario> lista_comentarios) {
+        Producto.contador_ids += 1;
+        this.id = Producto.contador_ids;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.valor = valor;
+        this.cantidad_inventario = cantidad_inventario;
+        this.lista_pedidos_producto = lista_pedidos_producto;
+        this.lista_comentarios = lista_comentarios;
+    }
+    
     public int getId() {
         return id;
     }
@@ -70,11 +69,11 @@ public class Producto {
         this.cantidad_inventario = cantidad_inventario;
     }
 
-    public List<PedidosProducto> getLista_pedidos_producto() {
+    public List<PedidoProducto> getLista_pedidos_producto() {
         return lista_pedidos_producto;
     }
 
-    public void setLista_pedidos_producto(List<PedidosProducto> lista_pedidos_producto) {
+    public void setLista_pedidos_producto(List<PedidoProducto> lista_pedidos_producto) {
         this.lista_pedidos_producto = lista_pedidos_producto;
     }
 

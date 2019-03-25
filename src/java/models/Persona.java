@@ -1,4 +1,4 @@
-package petshop;
+package models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,19 +20,18 @@ public class Persona {
     private List<Producto> lista_deseos;
     private List<Comentario> lista_comentarios;
     private List<Pedido> lista_pedidos;
-    
-    public Persona(){
-        
-        this.id = Persona.contador_ids + 1;
-        this.nombre = "";
-        this.email = "";
-        this.telefono = "";
-        this.direccion = "";
-        this.password = "";
-        this.lista_deseos = new ArrayList<Producto>();
-        this.lista_comentarios = new ArrayList<Comentario>();
-        this.lista_pedidos = new ArrayList<Pedido>();
-          
+
+    public Persona(String nombre, String email, String telefono, String direccion, String password, List<Producto> lista_deseos, List<Comentario> lista_comentarios, List<Pedido> lista_pedidos) {
+        Persona.contador_ids += 1;
+        this.id = Persona.contador_ids;
+        this.nombre = nombre;
+        this.email = email;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.password = password;
+        this.lista_deseos = lista_deseos;
+        this.lista_comentarios = lista_comentarios;
+        this.lista_pedidos = lista_pedidos;
     }
 
     public int getId() {
