@@ -33,11 +33,6 @@ public class Persona {
         this.lista_pedidos = lista_pedidos;
     }
 
-    public Persona(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
     public int getId() {
         return id;
     }
@@ -135,23 +130,15 @@ public class Persona {
         return retorno;
 
     }
-
-    public boolean iniciar_sesion() {
-        for (Persona persona_actual : personas) {
-            if (persona_actual.getEmail().equals(this.getEmail()) && persona_actual.getPassword().equals(this.getPassword())) {
-                this.setId(persona_actual.getId());
-                this.setNombre(persona_actual.getNombre());
-                this.setTelefono(persona_actual.getTelefono());
-                this.setDireccion(persona_actual.getDireccion());
-                this.setLista_deseos(persona_actual.getLista_deseos());
-                this.setLista_comentarios(persona_actual.getLista_comentarios());
-                this.setLista_pedidos(persona_actual.getLista_pedidos());
-
-                return true;
+    
+    public static Persona getPersona(String email, String password) {
+        for (Persona persona_actual : Persona.personas) {
+            if (persona_actual.getEmail().equals(email) && persona_actual.getPassword().equals(password)) {
+                return persona_actual;
             }
         }
 
-        return false;
+        return null;
     }
 
     public Map<String, String> agregar_lista_deseos(Producto producto, Map<String, String> mensajes) {

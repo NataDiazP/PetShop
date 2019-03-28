@@ -52,13 +52,13 @@ public class LoginController extends MainController {
         // Login cliente
         if (session.getAttribute("tipoUsuario").equals("cliente")) {
 
-            Persona usuarioActual = new Persona(email, password);
+            Persona usuarioActual = Persona.getPersona(email, password);
 
-            if (usuarioActual.iniciar_sesion()) {
+            if (usuarioActual == null) {
+                session.setAttribute("mensajeOperacion", mensajes.get("error_login"));
+            } else {
                 session.setAttribute("usuarioActual", usuarioActual);
                 session.setAttribute("mensajeOperacion", mensajes.get("success_login"));
-            } else {
-                session.setAttribute("mensajeOperacion", mensajes.get("error_login"));
             }
 
         } else if (session.getAttribute("tipoUsuario").equals("empleado")) {

@@ -23,10 +23,6 @@ public class Empleado extends Persona {
         this.admin = admin;
     }
 
-    public Empleado(String email, String password) {
-        super(email, password);
-    }
-
     public boolean isActivo() {
         return activo;
     }
