@@ -5,12 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class Persona {
-    
+
     public static List<Persona> personas = new ArrayList<Persona>();
     public static int contador_ids = 0;
-    
+
     private int id;
     private String nombre;
     private String email;
@@ -32,6 +31,11 @@ public class Persona {
         this.lista_deseos = lista_deseos;
         this.lista_comentarios = lista_comentarios;
         this.lista_pedidos = lista_pedidos;
+    }
+
+    public Persona(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public int getId() {
@@ -105,39 +109,36 @@ public class Persona {
     public void setLista_pedidos(List<Pedido> lista_pedidos) {
         this.lista_pedidos = lista_pedidos;
     }
-    
-    
-    public Map<String, String> registrarse(String nombre, String email, String telefono, String direccion, String password, Map<String, String> mensajes){
-     
+
+    public Map<String, String> registrarse(String nombre, String email, String telefono, String direccion, String password, Map<String, String> mensajes) {
+
         Map<String, String> retorno = new HashMap<String, String>();
-        
-        for (Persona persona_actual :  personas){
-            if (persona_actual.getEmail().equals(email)){
-                retorno.put("exitoso","False");
+
+        for (Persona persona_actual : personas) {
+            if (persona_actual.getEmail().equals(email)) {
+                retorno.put("exitoso", "False");
                 retorno.put("mensaje", mensajes.get("error_register"));
                 return retorno;
             }
         }
-        
+
         setNombre(nombre);
         setEmail(email);
         setTelefono(telefono);
         setDireccion(direccion);
         setPassword(password);
-        
+
         Persona.personas.add(this);
-        
-        retorno.put("exitoso","True");
+
+        retorno.put("exitoso", "True");
         retorno.put("mensaje", mensajes.get("succes_register"));
         return retorno;
-           
+
     }
-    
-    public Map<String, String> iniciar_sesion (Map<String, String> mensajes){
-        
-        Map<String, String> retorno = new HashMap<String, String>();
-        for (Persona persona_actual :  personas){
-            if (persona_actual.getEmail().equals(this.getEmail()) && persona_actual.getPassword().equals(this.getPassword())){
+
+    public boolean iniciar_sesion() {
+        for (Persona persona_actual : personas) {
+            if (persona_actual.getEmail().equals(this.getEmail()) && persona_actual.getPassword().equals(this.getPassword())) {
                 this.setId(persona_actual.getId());
                 this.setNombre(persona_actual.getNombre());
                 this.setTelefono(persona_actual.getTelefono());
@@ -145,33 +146,29 @@ public class Persona {
                 this.setLista_deseos(persona_actual.getLista_deseos());
                 this.setLista_comentarios(persona_actual.getLista_comentarios());
                 this.setLista_pedidos(persona_actual.getLista_pedidos());
-                
-                retorno.put("exitoso","True");
-                retorno.put("mensaje", mensajes.get("succes_login"));
-                return retorno;        
-            }        
+
+                return true;
+            }
         }
-        retorno.put("exitoso","False");
-        retorno.put("mensaje", mensajes.get("error_login"));
-        return retorno;
-        
+
+        return false;
     }
-    
-    public Map<String, String> agregar_lista_deseos(Producto producto,Map<String, String> mensajes){
-        
+
+    public Map<String, String> agregar_lista_deseos(Producto producto, Map<String, String> mensajes) {
+
         Map<String, String> retorno = new HashMap<String, String>();
-        for (Producto producto_actual: this.lista_deseos){
-            if (producto_actual.getId() == producto.getId()){
-                retorno.put("exitoso","False");
+        for (Producto producto_actual : this.lista_deseos) {
+            if (producto_actual.getId() == producto.getId()) {
+                retorno.put("exitoso", "False");
                 retorno.put("mensaje", mensajes.get("product_already_added"));
                 return retorno;
             }
         }
         this.lista_deseos.add(producto);
-        
-        retorno.put("exitoso","True");
+
+        retorno.put("exitoso", "True");
         retorno.put("mensaje", mensajes.get("product_added"));
         return retorno;
     }
-       
+
 }
