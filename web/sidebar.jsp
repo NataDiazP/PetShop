@@ -40,9 +40,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="./empleados">
-            <i class="fas fa-fw fa-table"></i>
-            <span>${mensajes["employees"]}</span></a>
-    </li>
+    <c:if test="${tipoUsuario == 'empleado'}">
+        <li class="nav-item">
+            <a class="nav-link" href="./empleados">
+                <i class="fas fa-fw fa-user-friends"></i>
+                <span>${mensajes["employees"]}</span></a>
+        </li>
+    </c:if>
 </ul>

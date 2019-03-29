@@ -33,6 +33,15 @@ public class Persona {
         this.lista_pedidos = lista_pedidos;
     }
 
+    public Persona(String nombre, String email, String telefono, String direccion, String password) {
+        this.nombre = nombre;
+        this.email = email;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.password = password;
+    }
+    
+
     public int getId() {
         return id;
     }

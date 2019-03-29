@@ -43,6 +43,8 @@ public class LoginController extends MainController {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        setMessages(request);
 
         HttpSession session = request.getSession();
 
@@ -55,10 +57,16 @@ public class LoginController extends MainController {
             Persona usuarioActual = Persona.getPersona(email, password);
 
             if (usuarioActual == null) {
-                session.setAttribute("mensajeOperacion", mensajes.get("error_login"));
+                request.setAttribute("mensajeError", mensajes.get("error_login"));
+
+                RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+                view.forward(request, response);
             } else {
                 session.setAttribute("usuarioActual", usuarioActual);
-                session.setAttribute("mensajeOperacion", mensajes.get("success_login"));
+                request.setAttribute("mensajeExito", mensajes.get("success_login"));
+
+                RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
+                view.forward(request, response);
             }
 
         } else if (session.getAttribute("tipoUsuario").equals("empleado")) {
@@ -66,17 +74,22 @@ public class LoginController extends MainController {
             Empleado usuarioActual = Empleado.getEmpleado(email, password);
 
             if (usuarioActual == null) {
-                session.setAttribute("mensajeOperacion", mensajes.get("error_login"));
+                request.setAttribute("mensajeError", mensajes.get("error_login"));
+                
+                RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+                view.forward(request, response);
             } else if (usuarioActual.isActivo()) {
                 session.setAttribute("usuarioActual", usuarioActual);
-                session.setAttribute("mensajeOperacion", mensajes.get("success_login"));
+                request.setAttribute("mensajeExito", mensajes.get("success_login"));
+
+                RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
+                view.forward(request, response);
             } else {
-                session.setAttribute("mensajeOperacion", mensajes.get("deactivated_employee"));
+                request.setAttribute("mensajeError", mensajes.get("deactivated_employee"));
+
+                RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+                view.forward(request, response);
             }
         }
-
-        RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
-        view.forward(request, response);
-
     }
 }
