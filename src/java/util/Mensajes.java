@@ -30,6 +30,8 @@ public class Mensajes {
             put("error_login", "No se pudo encontrar su direccion de correo electronico en el sistema. Por favor intente nuevamente.");
             put("succes_login", "Ha iniciado sesion con exito.");
             put("deactivated_employee", "Este empleado no tiene acceso a Petshop en este momento.");
+            put("fictional_data_added","Datos ficticios ya agregados");
+            put("error_fictional_data_txt","Error de lectura");
 
 //             "welcome_menu": "\nBienvenido a Petshop \nSeleccione la opción deseada: \n\n1. Generar datos ficticios.\n2. Generar datos ficticios desde un txt.\n3. Usuarios.\n4. Salir.",
 //        "user_type": "\nSeleccione el tipo de usuario: \n\n1. Cliente.\n2. Empleado.\n3. Volver al menu principal.",
