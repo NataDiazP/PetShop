@@ -28,6 +28,14 @@ public class Producto {
         this.lista_pedidos_producto = lista_pedidos_producto;
         this.lista_comentarios = lista_comentarios;
     }
+    public Producto(String nombre, String descripcion, float valor, int cantidad_inventario) {
+        Producto.contador_ids += 1;
+        this.id = Producto.contador_ids;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.valor = valor;
+        this.cantidad_inventario = cantidad_inventario;
+    }
     
     public int getId() {
         return id;
@@ -149,5 +157,5 @@ public class Producto {
         }
         return false;
     }
-    
+
 }
