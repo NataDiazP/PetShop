@@ -1,5 +1,4 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +30,12 @@
             <div class="card card-login mx-auto mt-5">
                 <div class="card-header">${mensajes["login"]}</div>
                 <div class="card-body">
-                    <form>
+                    
+                    <c:if test="${!empty mensajeError}">
+                        <p class="text-danger">${mensajeError}</p>
+                    </c:if>
+                        
+                    <form method="POST" action="./login">
                         <div class="form-group">
                             <div class="form-label-group">
                                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">

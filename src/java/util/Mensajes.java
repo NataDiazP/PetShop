@@ -17,11 +17,20 @@ public class Mensajes {
         {
             put("header_text", "Petshop");
             put("welcome_text", "¡Bienvenido a Petshop!");
+            put("dashboard", "Dashboard");
             put("login", "Iniciar sesión");
             put("email", "Correo electrónico");
+            put("name", "Nombre");
+            put("phone", "Teléfono");
+            put("address", "Dirección");
             put("password", "Contraseña");
+            put("admin", "Empleado administrador");
+            put("employees", "Empleados");
+            put("create_employee", "Crear empleado");
+            put("error_login", "No se pudo encontrar su direccion de correo electronico en el sistema. Por favor intente nuevamente.");
+            put("succes_login", "Ha iniciado sesion con exito.");
+            put("deactivated_employee", "Este empleado no tiene acceso a Petshop en este momento.");
 
-//            
 //             "welcome_menu": "\nBienvenido a Petshop \nSeleccione la opción deseada: \n\n1. Generar datos ficticios.\n2. Generar datos ficticios desde un txt.\n3. Usuarios.\n4. Salir.",
 //        "user_type": "\nSeleccione el tipo de usuario: \n\n1. Cliente.\n2. Empleado.\n3. Volver al menu principal.",
 //        "client_login_menu": "\nSelecciona una opcion\n\n1. Iniciar sesión.\n2. Registrarse.\n3. Volver al menu principal.",

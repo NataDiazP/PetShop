@@ -23,6 +23,12 @@ public class Empleado extends Persona {
         this.admin = admin;
     }
 
+    public Empleado(String nombre, String email, String telefono, String direccion, String password, boolean activo, boolean admin) {
+        super(nombre, email, telefono, direccion, password);
+        this.activo = activo;
+        this.admin = admin;
+    }
+
     public boolean isActivo() {
         return activo;
     }
@@ -39,39 +45,14 @@ public class Empleado extends Persona {
         this.admin = admin;
     }
 
-    public Map<String, String> iniciarSesion(Map<String, String> mensajes) {
-
-        Map<String, String> retorno = new HashMap<String, String>();
-
+    public static Empleado getEmpleado(String email, String password) {
         for (Empleado empleado_actual : Empleado.empleados) {
-            if (empleado_actual.getEmail().equals(this.getEmail()) && empleado_actual.getPassword() == this.getPassword()) {
-                if (empleado_actual.isActivo() == false) {
-                    retorno.put("exitoso", "False");
-                    retorno.put("mensaje", mensajes.get("deactivated_employee"));
-
-                    return retorno;
-
-                }
-
-                this.setId(empleado_actual.getId());
-                this.setNombre(empleado_actual.getNombre());
-                this.setTelefono(empleado_actual.getTelefono());
-                this.setDireccion(empleado_actual.getDireccion());
-                this.setActivo(empleado_actual.isActivo());
-
-                retorno.put("exitoso", "True");
-                retorno.put("mensaje", mensajes.get("succes_login"));
-
-                return retorno;
-
+            if (empleado_actual.getEmail().equals(email) && empleado_actual.getPassword().equals(password)) {
+                return empleado_actual;
             }
         }
 
-        retorno.put("exitoso", "False");
-        retorno.put("mensaje", mensajes.get("error_login"));
-
-        return retorno;
-
+        return null;
     }
 
     public Map<String, String> guardarEmpleadoTxt(Map<String, String> mensajes) {
