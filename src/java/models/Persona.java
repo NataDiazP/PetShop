@@ -34,6 +34,8 @@ public class Persona {
     }
 
     public Persona(String nombre, String email, String telefono, String direccion, String password) {
+        Persona.contador_ids += 1;
+        this.id = Persona.contador_ids;
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
@@ -114,29 +116,19 @@ public class Persona {
         this.lista_pedidos = lista_pedidos;
     }
 
-    public Map<String, String> registrarse(String nombre, String email, String telefono, String direccion, String password, Map<String, String> mensajes) {
-
-        Map<String, String> retorno = new HashMap<String, String>();
+    public static Persona registrarse(String nombre, String email, String telefono, String direccion, String password) {
 
         for (Persona persona_actual : personas) {
-            if (persona_actual.getEmail().equals(email)) {
-                retorno.put("exitoso", "False");
-                retorno.put("mensaje", mensajes.get("error_register"));
-                return retorno;
+            if (persona_actual.getEmail().equals(email)) {               
+                return null;
             }
         }
 
-        setNombre(nombre);
-        setEmail(email);
-        setTelefono(telefono);
-        setDireccion(direccion);
-        setPassword(password);
+        Persona usuario_actual = new Persona(nombre, email,telefono,direccion,password);
 
-        Persona.personas.add(this);
+        Persona.personas.add(usuario_actual);
 
-        retorno.put("exitoso", "True");
-        retorno.put("mensaje", mensajes.get("succes_register"));
-        return retorno;
+        return usuario_actual;
 
     }
     
