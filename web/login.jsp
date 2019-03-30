@@ -1,4 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="true" %> <!-- Esto es para poder usar los atributos que estan en la session aqui adentro en el jsp-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,8 @@
     </head>
 
     <body class="bg-dark">
-
+        
+        <!-- Container de inicio de sesion --> 
         <div class="container">
             <div class="card card-login mx-auto mt-5">
                 <div class="card-header">${mensajes["login"]}</div>
@@ -38,24 +40,70 @@
                     <form method="POST" action="./login">
                         <div class="form-group">
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+                                <input type="email" name= "correo" id="inputEmail" class="form-control" placeholder="Correo electronico" required="required">
                                 <label for="inputEmail">${mensajes["email"]}</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                                <input type="password" name= "password" id="inputPassword" class="form-control" placeholder="Password" required="required">
                                 <label for="inputPassword">${mensajes["password"]}</label>
                             </div>
                         </div>
                         <input class="btn btn-primary btn-block" type="submit" value="${mensajes["login"]}" />
                     </form>
-                    <div class="text-center">
-                        <a class="d-block small mt-3" href="register.html">Register an Account</a>
-                    </div>
                 </div>
             </div>
         </div>
+          
+        <!-- Container de Registro -->
+        <c:if test="${sessionScope.tipoUsuario == 'cliente'}"> <!-- Accedo al tipo de usuario almacenado en sesion para saber si le muestro o no el register-->
+            <div class="container">
+                <div class="card card-login mx-auto mt-5">
+                    <div class="card-header">${mensajes["register"]}</div>
+                    <div class="card-body">
+
+
+                        <form method="POST" action="./register">
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="text" name= "nombre" id= "inputName" class="form-control" placeholder="Nombre" required="required">
+                                    <label for="inputName">${mensajes["name"]}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="text" name= "telefono" id = "inputPhone" class="form-control" placeholder="Nombre" required="required">
+                                    <label for="inputPhone">${mensajes["phone"]}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="text" name= "direccion" id = "inputAdress" class="form-control" placeholder="Nombre" required="required">
+                                    <label for="inputAdress">${mensajes["address"]}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="email" name= "correo" id = "inputEmailReg" class="form-control" placeholder="Correo electronico" required="required">
+                                    <label for="inputEmailReg">${mensajes["email"]}</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <input type="password" name= "password" id = "inputPasswordReg" class="form-control" placeholder="Password" required="required">
+                                    <label for="inputPasswordReg">${mensajes["password"]}</label>
+                                </div>
+                            </div>
+                            <input class="btn btn-primary btn-block" type="submit" value="${mensajes["register"]}" />
+                            <c:if test="${!empty mensajeErrorRegistro}">
+                                <br><p class="text-danger">${mensajeErrorRegistro}</p>
+                            </c:if>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </c:if>
 
         <!-- Bootstrap core JavaScript-->
         <script src="js/jquery/jquery.min.js"></script>
