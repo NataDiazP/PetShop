@@ -40,7 +40,13 @@
                     <div class="card">
                         <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Generar datos ficticios</a>
+                            <form action="./index" method="GET">
+                                <input type ="hidden" name="datos" value="datosFicticios"/>
+                                <button class="btn btn-primary">Generar datos ficticios</button>
+                            </form>
+                            <c:if test="${!empty mensajeErrorDatosFicticios}">
+                                <p class="text-danger">${mensajeErrorDatosFicticios}</p>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -49,7 +55,13 @@
                     <div class="card">
                         <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Generar datos ficticios TXT</a>
+                            <form action="./index" method="GET">
+                                <input type ="hidden" name="datos" value="datosFicticiosTXT"/>
+                                <button class="btn btn-primary">Generar datos ficticios TXT</button>
+                            </form>
+                            <c:if test="${!empty mensajeErrorDatosFicticiosTXT}">
+                                <p class="text-danger">${mensajeErrorDatosFicticiosTXT}</p>
+                            </c:if>
                         </div>
                     </div>
                 </div>
