@@ -132,8 +132,8 @@ public class Persona {
 
     }
     
-    public static Persona getPersona(String email, String password) {
-        for (Persona persona_actual : Persona.personas) {
+    public static Persona getPersona(List<Persona> personas, String email, String password) {
+        for (Persona persona_actual : personas) {
             if (persona_actual.getEmail().equals(email) && persona_actual.getPassword().equals(password)) {
                 return persona_actual;
             }

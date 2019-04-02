@@ -164,7 +164,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-label-group">
-                                                <input type="checkbox" id="admin"required="required">
+                                                <input type="checkbox" id="admin">
                                                 <label for="admin">${mensajes["admin"]}</label>
                                             </div>
                                         </div>

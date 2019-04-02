@@ -12,8 +12,6 @@ import java.util.Scanner;
 
 public class Empleado extends Persona {
 
-    public static List<Empleado> empleados = new ArrayList<Empleado>();
-
     private boolean activo;
     private boolean admin;
 
@@ -45,8 +43,8 @@ public class Empleado extends Persona {
         this.admin = admin;
     }
 
-    public static Empleado getEmpleado(String email, String password) {
-        for (Empleado empleado_actual : Empleado.empleados) {
+    public static Empleado getEmpleado(List<Empleado> empleados, String email, String password) {
+        for (Empleado empleado_actual : empleados) {
             if (empleado_actual.getEmail().equals(email) && empleado_actual.getPassword().equals(password)) {
                 return empleado_actual;
             }
@@ -55,7 +53,7 @@ public class Empleado extends Persona {
         return null;
     }
 
-    public Map<String, String> guardarEmpleadoTxt(Map<String, String> mensajes) {
+    public Map<String, String> guardarEmpleadoTxt(List<Empleado> empleados, Map<String, String> mensajes) {
 
         Map<String, String> retorno = new HashMap<String, String>();
 
@@ -84,7 +82,7 @@ public class Empleado extends Persona {
             escritor_linea.write(this.getNombre() + ";" + this.getEmail() + ";" + this.getPassword() + ";" + this.getTelefono() + ";" + this.getDireccion() + ";" + this.isAdmin() + ";" + this.isActivo() + "\n");
             escritor_linea.close();
 
-            Empleado.empleados.add(this);
+            empleados.add(this);
 
         } catch (IOException e) {
             System.out.println("Error en la escritura");
@@ -97,10 +95,10 @@ public class Empleado extends Persona {
 
     }
 
-    public static String cambiarEstadoEmpleado(int id_empleado, Map<String, String> mensajes) {
+    public static String cambiarEstadoEmpleado(List<Empleado> empleados, int id_empleado, Map<String, String> mensajes) {
         boolean estado_actual;
 
-        for (Empleado empleado_actual : Empleado.empleados) {
+        for (Empleado empleado_actual : empleados) {
             if (empleado_actual.getId() == id_empleado) {
                 estado_actual = empleado_actual.isActivo();
                 empleado_actual.setActivo(!estado_actual);
