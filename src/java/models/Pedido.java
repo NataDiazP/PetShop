@@ -21,12 +21,23 @@ public class Pedido {
     public Pedido(LocalDate fecha, Persona persona, float valor_total, String estado, List<PedidoProducto> lista_pedidos_producto) {        
         Pedido.contador_ids += 1;
         this.id = Pedido.contador_ids;
-        this.fecha = fecha;
-        this.persona = persona;
-        this.valor_total = valor_total;
-        this.estado = estado;
-        this.lista_pedidos_producto = lista_pedidos_producto;       
+        this.setFecha(fecha);
+        this.setPersona(persona);
+        this.setValor_total(valor_total);
+        this.setEstado(estado);
+        this.setLista_pedidos_producto(lista_pedidos_producto);
     }
+
+    public Pedido(LocalDate fecha, Persona persona) {
+        Pedido.contador_ids += 1;
+        this.id = Pedido.contador_ids;
+        setFecha(fecha);
+        setPersona(persona);
+        setEstado("pendiente");  
+        this.setLista_pedidos_producto(new ArrayList());
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -173,6 +184,18 @@ public class Pedido {
             return retorno;    
             
         }
+        
+    }
+    
+    public static Pedido getPedidoPendiente (Persona usuarioActual){
+        
+        for (Pedido pedido_actual: usuarioActual.getLista_pedidos()){
+            if (pedido_actual.getEstado().equals("pendiente")){
+                return pedido_actual;
+            }
+        }
+        
+        return null;
         
     }
     
