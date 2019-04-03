@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,6 +28,10 @@ public class DashboardController extends MainController {
             throws ServletException, IOException {
 
         setMessages(request);
+        
+        HttpSession session = request.getSession();
+
+        System.out.println(session.getAttribute("usuarioActual"));
 
         RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
         view.forward(request, response);

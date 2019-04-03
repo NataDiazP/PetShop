@@ -19,6 +19,7 @@ public class Mensajes {
             put("welcome_text", "¡Bienvenido a Petshop!");
             put("dashboard", "Dashboard");
             put("login", "Iniciar sesión");
+            put("logout", "Cerrar sesión");
             put("email", "Correo electrónico");
             put("name", "Nombre");
             put("phone", "Teléfono");
@@ -32,6 +33,7 @@ public class Mensajes {
             put("error_register", "Error al registrarse.");
             put("deactivated_employee", "Este empleado no tiene acceso a Petshop en este momento.");
             put("fictional_data_added", "Datos ficticios ya agregados.");
+            put("fictional_data_added_success", "Datos ficticios agregados exitosamente.");
             put("error_fictional_data_txt", "Error de lectura.");
             put("register", "Registrarse");
             put("day_orders", "Resumen del dia");

@@ -6,6 +6,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +45,7 @@ public class LoginController extends MainController {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         setMessages(request);
 
         HttpSession session = request.getSession();
@@ -53,8 +55,15 @@ public class LoginController extends MainController {
 
         // Login cliente
         if (session.getAttribute("tipoUsuario").equals("cliente")) {
+            List<Persona> personas = new ArrayList<Persona>();
 
-            Persona usuarioActual = Persona.getPersona(email, password);
+            if (null != session.getAttribute("Personas")) {
+                personas = (ArrayList<Persona>) session.getAttribute("Personas");
+            }
+
+            System.out.println("LAS PERSONAS" + personas);
+
+            Persona usuarioActual = Persona.getPersona(personas, email, password);
 
             if (usuarioActual == null) {
                 request.setAttribute("mensajeError", mensajes.get("error_login"));
@@ -70,12 +79,18 @@ public class LoginController extends MainController {
             }
 
         } else if (session.getAttribute("tipoUsuario").equals("empleado")) {
+            List<Empleado> empleados = new ArrayList<Empleado>();
+
+            if (null != session.getAttribute("Empleados")) {
+                empleados = (ArrayList<Empleado>) session.getAttribute("Empleados");
+            }
+
             // Login Empleado
-            Empleado usuarioActual = Empleado.getEmpleado(email, password);
+            Empleado usuarioActual = Empleado.getEmpleado(empleados, email, password);
 
             if (usuarioActual == null) {
                 request.setAttribute("mensajeError", mensajes.get("error_login"));
-                
+
                 RequestDispatcher view = request.getRequestDispatcher("login.jsp");
                 view.forward(request, response);
             } else if (usuarioActual.isActivo()) {

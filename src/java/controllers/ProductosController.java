@@ -15,8 +15,8 @@ import models.Producto;
  *
  * @author Juan Manuel Trujillo
  */
-@WebServlet(name = "MainProducts", urlPatterns = {"/MainProducts"})
-public class MainProducts extends MainController {
+@WebServlet(name = "MainProducts", urlPatterns = {"/productos"})
+public class ProductosController extends MainController {
 
    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +28,7 @@ public class MainProducts extends MainController {
         
         request.setAttribute("productos", Producto.productos);
 
-        RequestDispatcher view = request.getRequestDispatcher("vistaproductos.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("productos.jsp");
         view.forward(request, response);
 
     }

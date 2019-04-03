@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +48,9 @@
                             <c:if test="${!empty mensajeErrorDatosFicticios}">
                                 <p class="text-danger">${mensajeErrorDatosFicticios}</p>
                             </c:if>
+                            <c:if test="${!empty mensajeExitoDatosFicticios}">
+                                <p class="text-success">${mensajeExitoDatosFicticios}</p>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -61,6 +65,9 @@
                             </form>
                             <c:if test="${!empty mensajeErrorDatosFicticiosTXT}">
                                 <p class="text-danger">${mensajeErrorDatosFicticiosTXT}</p>
+                            </c:if>
+                            <c:if test="${!empty mensajeExitoDatosFicticiosTXT}">
+                                <p class="text-success">${mensajeExitoDatosFicticiosTXT}</p>
                             </c:if>
                         </div>
                     </div>

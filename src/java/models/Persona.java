@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class Persona {
 
-    public static List<Persona> personas = new ArrayList<Persona>();
     public static int contador_ids = 0;
 
     private int id;
@@ -42,7 +41,6 @@ public class Persona {
         this.direccion = direccion;
         this.password = password;
     }
-    
 
     public int getId() {
         return id;
@@ -116,24 +114,24 @@ public class Persona {
         this.lista_pedidos = lista_pedidos;
     }
 
-    public static Persona registrarse(String nombre, String email, String telefono, String direccion, String password) {
+    public static Persona registrarse(List<Persona> personas, String nombre, String email, String telefono, String direccion, String password) {
 
         for (Persona persona_actual : personas) {
-            if (persona_actual.getEmail().equals(email)) {               
+            if (persona_actual.getEmail().equals(email)) {
                 return null;
             }
         }
 
-        Persona usuario_actual = new Persona(nombre, email,telefono,direccion,password);
+        Persona usuario_actual = new Persona(nombre, email, telefono, direccion, password);
 
-        Persona.personas.add(usuario_actual);
+        personas.add(usuario_actual);
 
         return usuario_actual;
 
     }
-    
-    public static Persona getPersona(String email, String password) {
-        for (Persona persona_actual : Persona.personas) {
+
+    public static Persona getPersona(List<Persona> personas, String email, String password) {
+        for (Persona persona_actual : personas) {
             if (persona_actual.getEmail().equals(email) && persona_actual.getPassword().equals(password)) {
                 return persona_actual;
             }

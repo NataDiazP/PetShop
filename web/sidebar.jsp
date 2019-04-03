@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="true" %> <!-- Esto es para poder usar los atributos que estan en la session aqui adentro en el jsp-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
@@ -40,7 +41,7 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
     </li>
-    <c:if test="${tipoUsuario == 'empleado'}">
+    <c:if test="${sessionScope.tipoUsuario == 'empleado' and sessionScope.usuarioActual.isAdmin() == true}">
         <li class="nav-item">
             <a class="nav-link" href="./empleados">
                 <i class="fas fa-fw fa-user-friends"></i>
