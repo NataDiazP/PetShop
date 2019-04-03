@@ -35,6 +35,7 @@ public class Producto {
         this.descripcion = descripcion;
         this.valor = valor;
         this.cantidad_inventario = cantidad_inventario;
+        this.setLista_pedidos_producto(new ArrayList());
     }
     
     public int getId() {
@@ -128,8 +129,8 @@ public class Producto {
         return listado_productos_buscados;
     }
     
-    public static Producto seleccionarProducto(int numero_id){
-        for(Producto producto_actual : Producto.productos){
+    public static Producto seleccionarProducto(int numero_id, List<Producto> lista_productos){
+        for(Producto producto_actual : lista_productos){
             if (producto_actual.getId() == numero_id){
                 return producto_actual;
             }

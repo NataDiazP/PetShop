@@ -16,10 +16,18 @@ public class PedidoProducto {
     public PedidoProducto(int cantidad, Pedido pedido, Producto producto, float subtotal) {
         PedidoProducto.contador_ids += 1;
         this.id = PedidoProducto.contador_ids;
-        this.cantidad = cantidad;
-        this.pedido = pedido;
-        this.producto = producto;
-        this.subtotal = subtotal;
+        this.setCantidad(cantidad);
+        this.setPedido(pedido);
+        this.setProducto(producto);
+        this.setSubtotal(subtotal);
+    }
+
+    public PedidoProducto(int cantidad, Pedido pedido, Producto producto) {
+        PedidoProducto.contador_ids += 1;
+        this.id = PedidoProducto.contador_ids;
+        this.setCantidad(cantidad);
+        this.setPedido(pedido);
+        this.setProducto(producto);
     }
 
     public int getId() {
