@@ -112,16 +112,14 @@ public class PedidoProducto {
 
     }
 
-    public static String borrarProductoDeCarritoCompras(int id_producto, Pedido pedido_pendiente, Map<String, String> mensajes) {
+    public static void borrarProductoDeCarritoCompras(int id_producto, Pedido pedido_pendiente) {
         for (PedidoProducto item_carrito : pedido_pendiente.getLista_pedidos_producto()) {
             if (item_carrito.getProducto().getId() == id_producto) {
                 pedido_pendiente.getLista_pedidos_producto().remove(item_carrito);
-                pedido_pendiente.calcularValorTotal();
-
-                return mensajes.get("product_deleted");
+                return;
             }
         }
-        return mensajes.get("product_not_found");
-    }
 
+    }
+    
 }

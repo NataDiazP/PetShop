@@ -43,6 +43,7 @@ public class Persona {
         this.password = password;
         this.setLista_deseos(new ArrayList());
         this.setLista_pedidos(new ArrayList());
+        this.setLista_comentarios(new ArrayList());
     }
     
 
