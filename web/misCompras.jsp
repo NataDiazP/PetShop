@@ -100,16 +100,18 @@
       <div id="content-wrapper">
 
         <div class="container-fluid">
+          
 
 
           <!-- DataTables Example -->
+          <c:forEach items="${listaPedidos}" var="ped">
+          <c:if test="${(ped.getEstado() == 'Realizado')}">
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              ${mensajes["shopping_cart"]}</div>
+              Pedido # ${ped.getId()}</div>
             <div class="card-body">
               <div class="table-responsive">
-                <form action="./ComprarController" method="POST" id="comprar">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -117,36 +119,33 @@
                       <th>Producto</th>
                       <th>Descripcion</th>
                       <th>Valor</th>
-                      <th>Cantidad en inventario</th>
                       <th>Cantidad</th>
-                      <th>Eliminar</th>
+                      <th>Subtotal</th>
+                      <th>Comentar</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <c:forEach items="${listaCarrito}" var="list_car">
-                        <tr>
-                            <td>${list_car.getProducto().getId()}</td>
-                            <td>${list_car.getProducto().getNombre()}</td>
-                            <td>${list_car.getProducto().getDescripcion()}</td>
-                            <td>${list_car.getProducto().getValor()}</td>
-                            <td>${list_car.getProducto().getCantidad_inventario()}</td>
-                            <td>
-                               <input name="id_productos" type="hidden" value="${list_car.getProducto().getId()}" >
-                               <input name="cantidad_producto" required="required" min="1" max="${list_car.getProducto().getCantidad_inventario()}" value="${list_car.getCantidad()}" type="number">
-                            </td>    
-                            <td> 
-                                <a href="/PetShop/EliminarProductoCarrito?id_producto=${list_car.getProducto().getId()}"><button class="btn btn-danger" type="button">${mensajes["delete"]}</button></a>                            
-                            </td>
-                        </tr>
+                    <c:forEach items="${ped.getLista_pedidos_producto()}" var="ppd">
+                            <tr>
+                                <td>${ppd.getProducto().getId()}</td>
+                                <td>${ppd.getProducto().getNombre()}</td>
+                                <td>${ppd.getProducto().getDescripcion()}</td>
+                                <td>${ppd.getProducto().getValor()}</td>
+                                <td>${ppd.getCantidad()}</td>
+                                <td>${ppd.getSubtotal()}</td>
+                                <td> 
+                                    <a href="/PetShop/ComentarController?id_producto=${ppd.getProducto().getId()}&nombre_producto=${ppd.getProducto().getNombre()}"><button class="btn btn-warning" type="button">${mensajes["comment"]}</button></a>                            
+                                </td>
+                            </tr>
                     </c:forEach>
+                            <tr><td>Total: ${ped.getValor_total()}</td></tr>
                   </tbody>
                 </table>
-                <button class="btn btn-success" form="comprar">${mensajes["buy"]}</button>
-                </form>
-
               </div>
             </div>
           </div>
+          </c:if>
+          </c:forEach>
 
         </div>
         <!-- /.container-fluid -->

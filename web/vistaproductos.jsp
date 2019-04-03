@@ -163,6 +163,7 @@
                       <th>Descripcion</th>
                       <th>Valor</th>
                       <th>Cantidad en inventario</th>
+                      <th>Comentarios</th>
                       <th>Accion</th>
                       
                     </tr>
@@ -176,6 +177,11 @@
                                 <td>${pro.getDescripcion()}</td>
                                 <td>${pro.getValor()}</td>
                                 <td>${pro.getCantidad_inventario()}</td>
+                                <td>
+                                    <c:forEach items="${pro.getLista_comentarios()}" var="coment">
+                                        ${coment.getPersona().getNombre()} - ${coment.getDescripcion()}
+                                    </c:forEach>
+                                </td>
                                 <td>
                                     <form action="./AgregarListaDeseos" method="POST">
                                         <input type ="hidden" name="id_producto" value="${pro.getId()}"/>

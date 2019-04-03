@@ -38,9 +38,14 @@
        </li>
     <c:if test="${tipoUsuario == 'cliente'}">
         <li class="nav-item">
-            <a class="nav-link" href="./AgregarListaDeseos">
+            <a class="nav-link" href="./AgregarCarritoCompras">
                 <i class="fas fa-fw fa-user-friends"></i>
-                <span>${mensajes["wish_list"]}</span></a>
+                <span>${mensajes["shopping_cart"]}</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./ComprarController">
+                <i class="fas fa-fw fa-user-friends"></i>
+                <span>${mensajes["my_orders"]}</span></a>
         </li>
     </c:if>
     <c:if test="${tipoUsuario == 'empleado'}">
