@@ -40,6 +40,8 @@ public class Persona {
         this.telefono = telefono;
         this.direccion = direccion;
         this.password = password;
+        this.setLista_deseos(new ArrayList());
+        this.setLista_pedidos(new ArrayList());
     }
 
     public int getId() {
@@ -138,6 +140,15 @@ public class Persona {
         }
 
         return null;
+    }
+
+    public void eliminarProductoListaDeseos(int id_producto) {
+        for (Producto producto_actual : this.getLista_deseos()) {
+            if (producto_actual.getId() == id_producto) {
+                this.getLista_deseos().remove(producto_actual);
+                return;
+            }
+        }
     }
 
     public Map<String, String> agregar_lista_deseos(Producto producto, Map<String, String> mensajes) {

@@ -10,18 +10,19 @@ import javax.servlet.http.HttpSession;
 import models.Empleado;
 import models.Persona;
 import models.Producto;
-import static util.Mensajes.mensajes;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import static util.Mensajes.mensajes;
 
 /**
  *
@@ -48,6 +49,7 @@ public class IndexController extends MainController {
         }
 
         if (request.getParameter("datos").equals("datosFicticios")) {
+
             // Datos ficticios 
             if (session.getAttribute("datosFicticios") == null) { // Se valida que no se hayan agregado antes.
 
@@ -64,6 +66,7 @@ public class IndexController extends MainController {
 
                 session.setAttribute("Empleados", empleados); // Guardar en sesion
                 session.setAttribute("Personas", personas);
+
             } else {
                 request.setAttribute("mensajeErrorDatosFicticios", mensajes.get("fictional_data_added"));
             }
