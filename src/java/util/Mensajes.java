@@ -49,7 +49,9 @@ public class Mensajes {
             put("create_product", "Crear producto");
             put("delete", "Eliminar");
             put("wish_list", "Lista de deseos");
-            
+            put("my_orders", "Mis compras");
+            put("comment", "Comentar");
+            put("commentary", "Comentario");
             
 
 //             "welcome_menu": "\nBienvenido a Petshop \nSeleccione la opción deseada: \n\n1. Generar datos ficticios.\n2. Generar datos ficticios desde un txt.\n3. Usuarios.\n4. Salir.",
