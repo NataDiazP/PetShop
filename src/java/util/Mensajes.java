@@ -40,8 +40,11 @@ public class Mensajes {
             put("view_details", "Ver detalles");
             put("total_day_orders", "El valor total de las ventas del dia es: ");
             put("mean_day_orders", "El valor promedio de las ventas del dia es: ");
-            
-
+            put("confirm_logout", "¿Estás seguro de que quieres cerrar sesión?");
+            put("cancel", "Cancelar");
+            put("accept", "Aceptar");
+            put("actions", "Acciones");
+    
 //             "welcome_menu": "\nBienvenido a Petshop \nSeleccione la opción deseada: \n\n1. Generar datos ficticios.\n2. Generar datos ficticios desde un txt.\n3. Usuarios.\n4. Salir.",
 //        "user_type": "\nSeleccione el tipo de usuario: \n\n1. Cliente.\n2. Empleado.\n3. Volver al menu principal.",
 //        "client_login_menu": "\nSelecciona una opcion\n\n1. Iniciar sesión.\n2. Registrarse.\n3. Volver al menu principal.",

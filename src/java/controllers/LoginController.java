@@ -61,8 +61,6 @@ public class LoginController extends MainController {
                 personas = (ArrayList<Persona>) session.getAttribute("Personas");
             }
 
-            System.out.println("LAS PERSONAS" + personas);
-
             Persona usuarioActual = Persona.getPersona(personas, email, password);
 
             if (usuarioActual == null) {
