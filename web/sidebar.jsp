@@ -30,16 +30,19 @@
             <a class="dropdown-item" href="blank.html">Blank Page</a>
         </div>
     </li>
+    
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li>
+            <a class="nav-link" href="./MainProducts">
+            <i class="fas fa-fw fa-user-friends"></i>
+            <span>${mensajes["products"]}</span></a>
+       </li>
+    <c:if test="${tipoUsuario == 'cliente'}">
+        <li class="nav-item">
+            <a class="nav-link" href="./AgregarListaDeseos">
+                <i class="fas fa-fw fa-user-friends"></i>
+                <span>${mensajes["wish_list"]}</span></a>
+        </li>
+    </c:if>
     <c:if test="${tipoUsuario == 'empleado'}">
         <li class="nav-item">
             <a class="nav-link" href="./empleados">
