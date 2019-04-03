@@ -19,6 +19,7 @@ public class Mensajes {
             put("welcome_text", "¡Bienvenido a Petshop!");
             put("dashboard", "Dashboard");
             put("login", "Iniciar sesión");
+            put("logout", "Cerrar sesión");
             put("email", "Correo electrónico");
             put("name", "Nombre");
             put("phone", "Teléfono");

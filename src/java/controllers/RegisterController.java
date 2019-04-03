@@ -8,6 +8,8 @@ package controllers;
 import static controllers.MainController.setMessages;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,32 +36,37 @@ public class RegisterController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
- @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         setMessages(request);
         HttpSession session = request.getSession();
-        
+
+        List<Persona> personas = new ArrayList<Persona>();
+
+        if (null != session.getAttribute("Personas")) {
+            personas = (ArrayList<Persona>) session.getAttribute("Personas");
+        }
+
         String nombre = request.getParameter("nombre");
         String telefono = request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
         String email = request.getParameter("correo");
         String password = request.getParameter("password");
-        
-        Persona usuarioRegistrar = Persona.registrarse(nombre, email, telefono, direccion, password);
-        
-        if (usuarioRegistrar != null){
+
+        Persona usuarioRegistrar = Persona.registrarse(personas, nombre, email, telefono, direccion, password);
+
+        if (usuarioRegistrar != null) {
             session.setAttribute("usuarioActual", usuarioRegistrar);
             RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
-                view.forward(request, response);
-        }
-        else{
+            view.forward(request, response);
+        } else {
             request.setAttribute("mensajeErrorRegistro", mensajes.get("error_register"));
             RequestDispatcher view = request.getRequestDispatcher("login.jsp");
-                view.forward(request, response);         
+            view.forward(request, response);
         }
-             
+
     }
-    
+
 }

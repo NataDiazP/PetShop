@@ -20,7 +20,6 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Mateo
  */
 @WebServlet(name = "IndexController", urlPatterns = {"/index"})
-public class IndexController extends HttpServlet {
+public class IndexController extends MainController {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,9 +37,14 @@ public class IndexController extends HttpServlet {
         HttpSession session = request.getSession();
 
         List<Empleado> empleados = new ArrayList<Empleado>();
+        List<Persona> personas = new ArrayList<Persona>();
 
         if (null != session.getAttribute("Empleados")) {
             empleados = (ArrayList<Empleado>) session.getAttribute("Empleados");
+        }
+
+        if (null != session.getAttribute("Personas")) {
+            personas = (ArrayList<Persona>) session.getAttribute("Personas");
         }
 
         if (request.getParameter("datos").equals("datosFicticios")) {
@@ -51,7 +55,7 @@ public class IndexController extends HttpServlet {
                 Producto.productos.add(new Producto("Collar para perro", "Mas hermoso todavia", 50000, 5));
                 Producto.productos.add(new Producto("Respirador artificial para pez", "Burbujas burbujas", 38000, 6));
 
-                Persona.personas.add(new Persona("Mateo", "mateo@gmail.com", "123", "Av 123", "123"));
+                personas.add(new Persona("Mateo", "mateo@gmail.com", "123", "Av 123", "123"));
 
                 empleados.add(new Empleado("Natalia", "natalia@gmail.com", "123", "Av seriedad", "123", true, true));
 
@@ -59,10 +63,7 @@ public class IndexController extends HttpServlet {
                 request.setAttribute("mensajeExitoDatosFicticios", mensajes.get("fictional_data_added_success"));
 
                 session.setAttribute("Empleados", empleados); // Guardar en sesion
-                request.setAttribute("empleados", empleados); // Guardar en la vista - Asi se llama en el JSP       
-
-                RequestDispatcher view = request.getRequestDispatcher("empleados.jsp");
-                view.forward(request, response);
+                session.setAttribute("Personas", personas);
             } else {
                 request.setAttribute("mensajeErrorDatosFicticios", mensajes.get("fictional_data_added"));
             }
@@ -91,14 +92,13 @@ public class IndexController extends HttpServlet {
 
                     empleados.add(new Empleado(nombre, correo, telefono, direccion, password, activo, admin));;
                 }
-                
+
                 reader.close();
-                
+
                 session.setAttribute("datosFicticiosTXT", "agregados");
                 request.setAttribute("mensajeExitoDatosFicticiosTXT", mensajes.get("fictional_data_added_success"));
 
-                session.setAttribute("Empleados", empleados); // Guardar en sesion
-                request.setAttribute("empleados", empleados); // Guardar en la vista - Asi se llama en el JSP       
+                session.setAttribute("Empleados", empleados); // Guardar en sesion     
             }
         } else {
             request.setAttribute("mensajeErrorDatosFicticiosTXT", mensajes.get("fictional_data_added"));

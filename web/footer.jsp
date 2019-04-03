@@ -1,5 +1,4 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 <%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <!-- Footer -->
 <footer class="py-5 bg-dark">
