@@ -143,8 +143,14 @@
                                                     <td>
                                                         <form action="./eliminarEmpleado" method="POST">
                                                             <input type="hidden" name="id_empleado" value="${empl.getId()}" />
-                                                            <button class="btn btn-danger">
-                                                                <i class="fas fa-user-circle fa-fw"></i>
+                                                            <button class="btn btn-danger" alt="Eliminar">
+                                                                <i class="fas fa-trash-alt fa-fw"></i>
+                                                            </button>
+                                                        </form>
+                                                        <form action="./actualizarEmpleado" method="POST">
+                                                            <input type="hidden" name="id_empleado" value="${empl.getId()}" />
+                                                            <button class="btn btn-primary" alt="Actualizar">
+                                                                <i class="fas fa-retweet fa-fw"></i>
                                                             </button>
                                                         </form>
                                                     </td>
