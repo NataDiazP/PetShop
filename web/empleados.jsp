@@ -123,6 +123,7 @@
                                                 <th>${mensajes["phone"]}</th>
                                                 <th>${mensajes["address"]}</th>
                                                 <th>${mensajes["email"]}</th>
+                                                <th>${mensajes["active"]}</th>
                                                 <th>${mensajes["actions"]}</th>
                                             </tr>
                                         </thead>
@@ -132,14 +133,23 @@
                                                     <td>${empl.getNombre()}</td>
                                                     <td>${empl.getTelefono()}</td>
                                                     <td>${empl.getDireccion()}</td>
-                                                    <td>${empl.getEmail()}</td>
+                                                    <td>${empl.getDireccion()}</td>
+                                                    <td>${empl.isActivo()}</td>
                                                     <td>
-                                                        <form action="./eliminarEmpleado" method="POST">
+                                                        <form action="./CambiarEstadoEmpleado" method="POST">
                                                             <input type="hidden" name="id_empleado" value="${empl.getId()}" />
-                                                            <button class="btn btn-danger" alt="Eliminar">
-                                                                <i class="fas fa-trash-alt fa-fw"></i>
-                                                            </button>
-                                                        </form>
+                                                            <c:if test="${empl.isActivo() == true}">
+
+                                                                <button class="btn btn-danger" >
+                                                                    <i class="fas fa-user-minus fa-fw"></i>
+                                                                </button>
+                                                            </c:if>
+                                                            <c:if test="${empl.isActivo() == false}">
+                                                                <button class="btn btn-warning" >
+                                                                    <i class="fas fa-user-plus fa-fw"></i>
+                                                                </button>
+                                                            </c:if>
+                                                        </form><br>
                                                         <form action="./actualizarEmpleado" method="POST">
                                                             <input type="hidden" name="id_empleado" value="${empl.getId()}" />
                                                             <button class="btn btn-primary" alt="Actualizar">

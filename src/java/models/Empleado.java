@@ -95,7 +95,7 @@ public class Empleado extends Persona {
 
     }
 
-    public static String cambiarEstadoEmpleado(List<Empleado> empleados, int id_empleado, Map<String, String> mensajes) {
+    public static boolean cambiarEstadoEmpleado(List<Empleado> empleados, int id_empleado) {
         boolean estado_actual;
 
         for (Empleado empleado_actual : empleados) {
@@ -103,11 +103,11 @@ public class Empleado extends Persona {
                 estado_actual = empleado_actual.isActivo();
                 empleado_actual.setActivo(!estado_actual);
 
-                return mensajes.get("deactivate_confirmation");
+                return true;
 
             }
         }
-        return mensajes.get("employee_not_found");
+        return false;
 
     }
 

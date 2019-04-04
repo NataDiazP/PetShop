@@ -59,6 +59,7 @@ public class Mensajes {
             put("comment", "Comentar");
             put("commentary", "Comentario");
             put("empty_orders", "Aún no has realizado pedidos. ¡Ve y compra!");
+            put("active", "Activo");
 
 //             "welcome_menu": "\nBienvenido a Petshop \nSeleccione la opción deseada: \n\n1. Generar datos ficticios.\n2. Generar datos ficticios desde un txt.\n3. Usuarios.\n4. Salir.",
 //        "user_type": "\nSeleccione el tipo de usuario: \n\n1. Cliente.\n2. Empleado.\n3. Volver al menu principal.",
