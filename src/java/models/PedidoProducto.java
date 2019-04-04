@@ -1,8 +1,5 @@
 package models;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class PedidoProducto {
 
     public static int contador_ids = 0;
@@ -72,56 +69,14 @@ public class PedidoProducto {
         this.subtotal = subtotal;
     }
 
-    public static Map<String, String> agregarProductoACarritoCompras(int cantidad_venta, Pedido pedido_pendiente, Producto producto_seleccionado, Map<String, String> mensajes) {
-
-        Map<String, String> retorno = new HashMap<String, String>();
-        for (PedidoProducto item_carrito : pedido_pendiente.getLista_pedidos_producto()) {
-            if (item_carrito.getProducto().getId() == producto_seleccionado.getId()) {
-                if (item_carrito.getProducto().validarCantidadInventario(cantidad_venta)) {
-                    item_carrito.setCantidad(cantidad_venta);
-                    item_carrito.setSubtotal(cantidad_venta * producto_seleccionado.getValor());
-                    pedido_pendiente.calcularValorTotal();
-
-                    retorno.put("exitoso", "True");
-                    retorno.put("mensaje", mensajes.get("success_cart_add"));
-
-                    return retorno;
-
-                } else {
-                    retorno.put("exitoso", "False");
-                    retorno.put("mensaje", mensajes.get("product_sold_out") + item_carrito.getProducto());
-                }
-            }
-        }
-
-        if (producto_seleccionado.validarCantidadInventario(cantidad_venta)) {
-            PedidoProducto(cantidad_venta, pedido_pendiente, producto_seleccionado);
-            pedido_pendiente.calcularValorTotal();
-
-            retorno.put("exitoso", "True");
-            retorno.put("mensaje", mensajes.get("success_cart_add"));
-
-            return retorno;
-        } else {
-
-            retorno.put("exitoso", "False");
-            retorno.put("mensaje", mensajes.get("product_sold_out") + producto_seleccionado.getCantidad_inventario());
-
-            return retorno;
-        }
-
-    }
-
-    public static String borrarProductoDeCarritoCompras(int id_producto, Pedido pedido_pendiente, Map<String, String> mensajes) {
+    public static void borrarProductoDeCarritoCompras(int id_producto, Pedido pedido_pendiente) {
         for (PedidoProducto item_carrito : pedido_pendiente.getLista_pedidos_producto()) {
             if (item_carrito.getProducto().getId() == id_producto) {
                 pedido_pendiente.getLista_pedidos_producto().remove(item_carrito);
-                pedido_pendiente.calcularValorTotal();
-
-                return mensajes.get("product_deleted");
+                return;
             }
         }
-        return mensajes.get("product_not_found");
+
     }
 
 }

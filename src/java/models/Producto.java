@@ -36,6 +36,7 @@ public class Producto {
         this.valor = valor;
         this.cantidad_inventario = cantidad_inventario;
         this.setLista_pedidos_producto(new ArrayList());
+        this.setLista_comentarios(new ArrayList());
     }
     
     public int getId() {
@@ -158,5 +159,5 @@ public class Producto {
         }
         return false;
     }
-
+ 
 }

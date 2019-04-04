@@ -199,6 +199,19 @@ public class Pedido {
         
     }
     
+    public static PedidoProducto getProductoCarrito(Pedido pedido_actual, int id_producto){
+        
+        for (PedidoProducto pedido_producto_actual: pedido_actual.getLista_pedidos_producto()){
+            if (pedido_producto_actual.getProducto().getId() == id_producto){
+                return pedido_producto_actual;
+            }
+        }
+        
+        return null;
+
+            
+    }
+    
     
     
     

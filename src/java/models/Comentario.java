@@ -12,9 +12,9 @@ public class Comentario {
     public Comentario(String descripcion, Persona persona, Producto producto) {    
         Comentario.contador_ids += 1;
         this.id = Comentario.contador_ids;
-        this.descripcion = descripcion;
-        this.persona = persona;
-        this.producto = producto;
+        this.setDescripcion(descripcion);
+        this.setPersona(persona);
+        this.setProducto(producto);
     }
 
     public int getId() {

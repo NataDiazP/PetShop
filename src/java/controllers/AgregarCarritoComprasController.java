@@ -41,8 +41,12 @@ public class AgregarCarritoComprasController extends HttpServlet {
         
         Pedido pedidoPendiente = Pedido.getPedidoPendiente(personaActual);
         
-        
-        request.setAttribute("listaCarrito", pedidoPendiente.getLista_pedidos_producto());
+        if (pedidoPendiente == null){
+            request.setAttribute("listaCarrito", new ArrayList());           
+        }
+        else{
+            request.setAttribute("listaCarrito", pedidoPendiente.getLista_pedidos_producto());
+        }
         
         RequestDispatcher view = request.getRequestDispatcher("carritoCompras.jsp");
         view.forward(request, response);
@@ -71,14 +75,11 @@ public class AgregarCarritoComprasController extends HttpServlet {
         Pedido pedidoPendiente = Pedido.getPedidoPendiente(personaActual);
         
         if (pedidoPendiente == null){
-            pedidoPendiente = new Pedido(LocalDate.now(),personaActual);       
+            pedidoPendiente = new Pedido(LocalDate.now(),personaActual); 
         }
         
 
         PedidoProducto pedidoProductoActual = new PedidoProducto(1,pedidoPendiente,productoAgregar);
-        
-        personaActual.getLista_pedidos().add(pedidoPendiente);
-        System.out.println(personaActual.getLista_pedidos().get(0));
         
         
         request.setAttribute("listaCarrito", pedidoPendiente.getLista_pedidos_producto());
