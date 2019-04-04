@@ -39,6 +39,7 @@ public class IndexController extends MainController {
 
         List<Empleado> empleados = new ArrayList<Empleado>();
         List<Persona> personas = new ArrayList<Persona>();
+        List<Producto> productos = new ArrayList<Producto>();
 
         if (null != session.getAttribute("Empleados")) {
             empleados = (ArrayList<Empleado>) session.getAttribute("Empleados");
@@ -48,14 +49,18 @@ public class IndexController extends MainController {
             personas = (ArrayList<Persona>) session.getAttribute("Personas");
         }
 
+        if (null != session.getAttribute("Productos")) {
+            productos = (ArrayList<Producto>) session.getAttribute("Productos"); // Se obtienen los empleados de la sesión
+        }
+
         if (request.getParameter("datos").equals("datosFicticios")) {
 
             // Datos ficticios 
             if (session.getAttribute("datosFicticios") == null) { // Se valida que no se hayan agregado antes.
 
-                Producto.productos.add(new Producto("Collar para gato", "Hermoso", 50000, 2));
-                Producto.productos.add(new Producto("Collar para perro", "Mas hermoso todavia", 50000, 5));
-                Producto.productos.add(new Producto("Respirador artificial para pez", "Burbujas burbujas", 38000, 6));
+                productos.add(new Producto("Collar para gato", "Hermoso", 50000, 2));
+                productos.add(new Producto("Collar para perro", "Mas hermoso todavia", 50000, 5));
+                productos.add(new Producto("Respirador artificial para pez", "Burbujas burbujas", 38000, 6));
 
                 personas.add(new Persona("Mateo", "mateo@gmail.com", "123", "Av 123", "123"));
 
@@ -66,7 +71,7 @@ public class IndexController extends MainController {
 
                 session.setAttribute("Empleados", empleados); // Guardar en sesion
                 session.setAttribute("Personas", personas);
-
+                session.setAttribute("Productos", productos);
             } else {
                 request.setAttribute("mensajeErrorDatosFicticios", mensajes.get("fictional_data_added"));
             }

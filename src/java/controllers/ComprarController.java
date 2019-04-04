@@ -25,11 +25,12 @@ import models.Persona;
  * @author Mateo
  */
 @WebServlet(name = "ComprarController", urlPatterns = {"/ComprarController"})
-public class ComprarController extends HttpServlet {
+public class ComprarController extends MainController {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         setMessages(request);
         HttpSession session = request.getSession();
         
@@ -39,7 +40,7 @@ public class ComprarController extends HttpServlet {
         
         RequestDispatcher view = request.getRequestDispatcher("misCompras.jsp");
         view.forward(request, response);
-        
+       
     }
     
     @Override

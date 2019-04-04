@@ -2,7 +2,6 @@ package controllers;
 
 import static controllers.MainController.setMessages;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -22,7 +21,6 @@ import models.Producto;
 @WebServlet(name = "verListaDeseosController", urlPatterns = {"/AgregarListaDeseos"})
 public class verListaDeseosController extends HttpServlet {
     
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,11 +30,9 @@ public class verListaDeseosController extends HttpServlet {
         Persona personaActual = (Persona)session.getAttribute("usuarioActual");
         
         request.setAttribute("lista_deseos", personaActual.getLista_deseos());
+        
         RequestDispatcher view = request.getRequestDispatcher("listaDeseos.jsp");
-        view.forward(request, response);
-        
-        
-        
+        view.forward(request, response);        
     }
     
     @Override

@@ -50,12 +50,13 @@
 
                 <!-- Navbar -->
                 <ul class="navbar-nav ml-auto ml-md-0">
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link" href="./CarritoCompras" id="messagesDropdown">
-                            <i class="fas fa-shopping-cart fa-fw"></i>
-                            <span class="badge badge-danger">7</span>
-                        </a>
-                    </li>
+                    <c:if test="${sessionScope.tipoUsuario != 'empleado'}">
+                        <li class="nav-item no-arrow mx-1">
+                            <a class="nav-link" href="./AgregarCarritoCompras" id="messagesDropdown">
+                                <i class="fas fa-shopping-cart fa-fw"></i>
+                            </a>
+                        </li>
+                    </c:if>
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user-circle fa-fw"></i>

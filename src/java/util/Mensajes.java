@@ -27,7 +27,7 @@ public class Mensajes {
             put("value", "Valor");
             put("quantitie", "Cantidad en inventario");
             put("buy", "Comprar");
-            put("products", "Ver productos");
+            put("products", "Productos");
             put("shopping_cart", "Carrito de compras");
             put("address", "Dirección");
             put("password", "Contraseña");
@@ -58,6 +58,7 @@ public class Mensajes {
             put("my_orders", "Mis compras");
             put("comment", "Comentar");
             put("commentary", "Comentario");
+            put("empty_orders", "Aún no has realizado pedidos. ¡Ve y compra!");
 
 //             "welcome_menu": "\nBienvenido a Petshop \nSeleccione la opción deseada: \n\n1. Generar datos ficticios.\n2. Generar datos ficticios desde un txt.\n3. Usuarios.\n4. Salir.",
 //        "user_type": "\nSeleccione el tipo de usuario: \n\n1. Cliente.\n2. Empleado.\n3. Volver al menu principal.",

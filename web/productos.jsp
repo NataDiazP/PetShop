@@ -40,52 +40,52 @@
 
                 <div class="container-fluid">
                     <!-- Formulario-->
-                   <!-- c:if test="${sessionScope.tipoUsuario == 'empleado'}" -->
-                    <div class="card-header">
-                        <i class="fas fa-table"></i>
-                        Agrega un Producto</div>
-                    <div class="card card-register mx-auto mb-5">
-                        <div class="card-body">
-                            <form method="POST" action="./MainProducts">
-                                <div class="form-group">
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-label-group">
-                                                <input name="nombre" id="nombre" class="form-control" placeholder="${mensajes["name"]}" required="required" autofocus="autofocus">
-                                                <label for="nombre">${mensajes["name"]}</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-label-group">
-                                                <input id="descripcion" name="descripcion" class="form-control" placeholder="${mensajes["description"]}" required="required">
-                                                <label for="descripcion">${mensajes["description"]}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-label-group">
-                                                <input name="valor" id="valor" class="form-control" placeholder="${mensajes["value"]}" required="required">
-                                                <label for="valor">${mensajes["value"]}</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-label-group">
-                                                <input name="cantidad_inventario" id="cantidad" class="form-control" placeholder="${mensajes["quantitie"]}" required="required">
-                                                <label for="cantidad">${mensajes["quantitie"]}</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <input class="btn btn-primary btn-block" type="submit" value="${mensajes["create_product"]}" />
-                            </form>
+                    <c:if test="${sessionScope.tipoUsuario == 'empleado'}">
+                        <div class="card-header">
+                            <i class="fas fa-table"></i>
+                            Agrega un Producto
                         </div>
-                    </div>
-                    <!--/c:if-->
+                        <div class="card card-register mx-auto mb-5">
+                            <div class="card-body">
+                                <form method="POST" action="./productos">
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-label-group">
+                                                    <input name="nombre" id="nombre" class="form-control" placeholder="${mensajes["name"]}" required="required" autofocus="autofocus">
+                                                    <label for="nombre">${mensajes["name"]}</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-label-group">
+                                                    <input id="descripcion" name="descripcion" class="form-control" placeholder="${mensajes["description"]}" required="required">
+                                                    <label for="descripcion">${mensajes["description"]}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-label-group">
+                                                    <input name="valor" id="valor" class="form-control" placeholder="${mensajes["value"]}" required="required">
+                                                    <label for="valor">${mensajes["value"]}</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-label-group">
+                                                    <input name="cantidad_inventario" id="cantidad" class="form-control" placeholder="${mensajes["quantitie"]}" required="required">
+                                                    <label for="cantidad">${mensajes["quantitie"]}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <input class="btn btn-primary btn-block" type="submit" value="${mensajes["create_product"]}" />
+                                </form>
+                            </div>
+                        </div>
+                    </c:if>
 
                     <!-- DataTables Example -->
                     <div class="card mb-3">
@@ -117,20 +117,33 @@
                                                     <td>${pro.getValor()}</td>
                                                     <td>${pro.getCantidad_inventario()}</td>
                                                     <td>
-                                                        <c:forEach items="${pro.getLista_comentarios()}" var="coment">
-                                                            ${coment.getPersona().getNombre()} - ${coment.getDescripcion()}
+                                                        <c:forEach items="${pro.getLista_comentarios()}" var="comment">
+                                                            <p>${comment.getPersona().getNombre()} - ${comment.getDescripcion()}</p>
                                                         </c:forEach>
                                                     </td>
                                                     <td>
-                                                        <form action="./AgregarListaDeseos" method="POST">
-                                                            <input type ="hidden" name="id_producto" value="${pro.getId()}"/>
-                                                            <button class="btn btn-primary">${mensajes["add_to_wish_list"]}</button>
-                                                        </form><br>
-                                                        <form action="./AgregarCarritoCompras" method="POST">
-                                                            <input type ="hidden" name="id_producto" value="${pro.getId()}"/>
-                                                            <button class="btn btn-success">${mensajes["add_to_cart"]}</button>
-                                                        </form>                               
-
+                                                        <c:if test="${sessionScope.tipoUsuario == 'empleado'}">
+                                                            <form action="./EliminarProducto" method="POST">
+                                                                <input type ="hidden" name="id_producto" value="${pro.getId()}"/>
+                                                                <button class="btn btn-danger" alt="Eliminar">
+                                                                    <i class="fas fa-trash-alt fa-fw"></i>
+                                                                </button>
+                                                            </form><br>
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.tipoUsuario != 'empleado'}">
+                                                            <form action="./AgregarCarritoCompras" method="POST">
+                                                                <input type ="hidden" name="id_producto" value="${pro.getId()}"/>
+                                                                <button class="btn btn-success">
+                                                                    <i class="fas fa-cart-plus fa-fw"></i>
+                                                                </button>
+                                                            </form><br>                               
+                                                            <form action="./AgregarListaDeseos" method="POST">
+                                                                <input type ="hidden" name="id_producto" value="${pro.getId()}"/>
+                                                                <button class="btn btn-primary">
+                                                                    <i class="fas fa-star fa-fw"></i>
+                                                                </button>
+                                                            </form>
+                                                        </c:if>
                                                     </td>                   
                                                 </tr>
                                             </c:if>
@@ -140,7 +153,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 
