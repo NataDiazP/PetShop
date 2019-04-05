@@ -12,7 +12,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Petshop</title>
+        <title>${mensajes["header_text"]}</title>
 
         <!-- Bootstrap core CSS-->
         <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">

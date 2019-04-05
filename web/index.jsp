@@ -31,7 +31,7 @@
             <!-- Jumbotron Header -->
             <div class="jumbotron my-4">
                 <h1 class="display-3">¡Bienvenido a Petshop!</h1>
-                <p class="lead">Algún texto?</p>
+                <p class="lead">Bienvenido a la pagina numero 1 en ventas en productos para mascotas en el Valle de aburra</p>
             </div>
 
             <!-- Page Features -->
@@ -39,7 +39,7 @@
 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card">
-                        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                        <img class="card-img-top" src="images/datosficticios.jpg" alt="">
                         <div class="card-footer">
                             <form action="./index" method="GET">
                                 <input type ="hidden" name="datos" value="datosFicticios"/>
@@ -63,7 +63,7 @@
 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card">
-                        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                        <img class="card-img-top" src="images/txt1.jpg" alt="">
                         <div class="card-footer">
                             <form action="./index" method="GET">
                                 <input type ="hidden" name="datos" value="datosFicticiosTXT"/>
@@ -78,7 +78,7 @@
                             <c:if test="${!empty mensajeExitoDatosFicticiosTXT}">
                                 <br>
                                 <div class="alert alert-success" role="alert">
-                                    ${mensajeExitoDatosFicticiosTXT}
+                                    ${mensajeExitoDatosFicticios}
                                 </div>
                             </c:if>
                         </div>
@@ -87,7 +87,7 @@
 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card">
-                        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                        <img class="card-img-top" src="images/empleados.jpg" alt="">
                         <div class="card-footer">
                             <a href="./login?usuario=empleado" class="btn btn-primary">Empleados</a>
                         </div>
@@ -96,7 +96,7 @@
 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card">
-                        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                        <img class="card-img-top" src="images/clientes.jpg" alt="">
                         <div class="card-footer">
                             <a href="./login?usuario=cliente" class="btn btn-primary">Clientes</a>
                         </div>

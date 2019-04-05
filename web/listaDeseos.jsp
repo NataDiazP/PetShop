@@ -12,7 +12,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Petshop - Lista de deseos</title>
+        <title>${mensajes["header_text"]} - ${mensajes["wish_list"]}</title>
 
         <!-- Bootstrap core CSS-->
         <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -56,11 +56,11 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Producto</th>
-                                            <th>Descripcion</th>
-                                            <th>Valor</th>
-                                            <th>Cantidad en inventario</th>
+                                            <th>${mensajes["id"]}</th>
+                                            <th>${mensajes["product"]}</th>
+                                            <th>${mensajes["description"]}</th>
+                                            <th>${mensajes["value"]}</th>
+                                            <th>${mensajes["quantitie"]}</th>
                                             <th>${mensajes["actions"]}</th>
                                         </tr>
                                     </thead>
