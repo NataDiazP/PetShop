@@ -78,7 +78,7 @@
                             <c:if test="${!empty mensajeExitoDatosFicticiosTXT}">
                                 <br>
                                 <div class="alert alert-success" role="alert">
-                                    ${mensajeExitoDatosFicticios}
+                                    ${mensajeExitoDatosFicticiosTXT}
                                 </div>
                             </c:if>
                         </div>

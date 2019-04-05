@@ -78,28 +78,25 @@ public class AgregarCarritoComprasController extends HttpServlet {
             session.setAttribute("usuarioActual", personaActual);
 
             RequestDispatcher view = request.getRequestDispatcher("carritoCompras.jsp");
-            view.forward(request, response); 
-        }
-        else{
-            if (PedidoProducto.validarExistenciaCarrito(idProductoAgregar, pedidoPendiente) == true){
+            view.forward(request, response);
+        } else {
+            if (PedidoProducto.validarExistenciaCarrito(idProductoAgregar, pedidoPendiente) == true) {
                 PedidoProducto pedidoProductoActual = new PedidoProducto(1, pedidoPendiente, productoAgregar);
 
                 request.setAttribute("listaCarrito", pedidoPendiente.getLista_pedidos_producto());
                 session.setAttribute("usuarioActual", personaActual);
 
                 RequestDispatcher view = request.getRequestDispatcher("carritoCompras.jsp");
-                view.forward(request, response);   
-            }
-            else{
-                
+                view.forward(request, response);
+            } else {
+
                 request.setAttribute("error_agg_cart", "Producto ya agregado");
                 request.setAttribute("productos", productos);
                 RequestDispatcher view = request.getRequestDispatcher("productos.jsp");
-                view.forward(request, response); 
-                
+                view.forward(request, response);
+
             }
         }
 
-        
     }
 }

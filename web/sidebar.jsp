@@ -40,11 +40,16 @@
     <c:if test="${sessionScope.tipoUsuario == 'empleado'}">
         <c:if test="${sessionScope.usuarioActual.isAdmin() == true}">
             <li class="nav-item">
-            <a class="nav-link" href="./empleados">
-                <i class="fas fa-fw fa-user-friends"></i>
-                <span>${mensajes["employees"]}</span></a>
+                <a class="nav-link" href="./empleados">
+                    <i class="fas fa-fw fa-user-friends"></i>
+                    <span>${mensajes["employees"]}</span></a>
             </li>
         </c:if>
+        <li class="nav-item">
+            <a class="nav-link" href="./pedidos">
+                <i class="fas fa-list"></i>
+                <span>${mensajes["orders"]}</span></a>
+        </li> 
         <li class="nav-item">
             <a class="nav-link" href="./dayOrders">
                 <i class="fas fa-dollar-sign"></i>

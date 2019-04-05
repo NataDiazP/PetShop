@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Pedido {
-    
+
     public static List<Pedido> pedidos = new ArrayList<Pedido>();
     public static int contador_ids = 0;
-    
+
     private int id;
     private LocalDate fecha;
     private Persona persona;
@@ -18,7 +18,7 @@ public class Pedido {
     private String estado;
     private List<PedidoProducto> lista_pedidos_producto;
 
-    public Pedido(LocalDate fecha, Persona persona, float valor_total, String estado, List<PedidoProducto> lista_pedidos_producto) {        
+    public Pedido(LocalDate fecha, Persona persona, float valor_total, String estado, List<PedidoProducto> lista_pedidos_producto) {
         Pedido.contador_ids += 1;
         this.id = Pedido.contador_ids;
         this.setFecha(fecha);
@@ -33,11 +33,9 @@ public class Pedido {
         this.id = Pedido.contador_ids;
         setFecha(fecha);
         setPersona(persona);
-        setEstado("pendiente");  
+        setEstado("pendiente");
         this.setLista_pedidos_producto(new ArrayList());
     }
-    
-    
 
     public int getId() {
         return id;
@@ -46,7 +44,7 @@ public class Pedido {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public LocalDate getFecha() {
         return fecha;
     }
@@ -88,135 +86,123 @@ public class Pedido {
         this.lista_pedidos_producto = lista_pedidos_producto;
     }
 
-    public void calcularValorTotal(){
+    public void calcularValorTotal() {
         float valor_total = 0;
-        
-        for (PedidoProducto pedido_producto_actual: this.lista_pedidos_producto){
+
+        for (PedidoProducto pedido_producto_actual : this.lista_pedidos_producto) {
             valor_total += pedido_producto_actual.getSubtotal();
         }
         this.setValor_total(valor_total);
     }
-    
-    public void comprar(){
+
+    public void comprar() {
         Producto producto_seleccionado;
-        for (PedidoProducto pedido_producto_actual: this.lista_pedidos_producto){
+        for (PedidoProducto pedido_producto_actual : this.lista_pedidos_producto) {
             producto_seleccionado = pedido_producto_actual.getProducto();
             producto_seleccionado.setCantidad_inventario(producto_seleccionado.getCantidad_inventario() - pedido_producto_actual.getCantidad());
         }
         this.setFecha(LocalDate.now());
         this.setEstado("Realizado");
-        
+
     }
-    
-    public static String anularPedido(int id_pedido, Map<String, String> mensajes){
-        
-        for (Pedido pedido_actual: Pedido.pedidos){
+
+    public static void anularPedido(List<Pedido> pedidos, int id_pedido) {
+        for (Pedido pedido_actual : pedidos) {
             Producto producto_seleccionado;
-            if (pedido_actual.getId() == id_pedido){
-                for (PedidoProducto pedido_producto_actual: pedido_actual.getLista_pedidos_producto()){
+            if (pedido_actual.getId() == id_pedido) {
+                for (PedidoProducto pedido_producto_actual : pedido_actual.getLista_pedidos_producto()) {
                     producto_seleccionado = pedido_producto_actual.getProducto();
-                    producto_seleccionado.setCantidad_inventario(producto_seleccionado.getCantidad_inventario()+pedido_producto_actual.getCantidad());
+                    producto_seleccionado.setCantidad_inventario(producto_seleccionado.getCantidad_inventario() + pedido_producto_actual.getCantidad());
                 }
-                pedido_actual.setEstado("Anulado");
-                return mensajes.get("order_successfully_cancel");
                 
-                    
+                pedido_actual.setEstado("Anulado");
             }
         }
-        return mensajes.get("order_to_cancel_not_found");
     }
-    
-    public static List<Producto> productosAcomentar(Persona usuario_actual){
-        
+
+    public static List<Producto> productosAcomentar(Persona usuario_actual) {
+
         List<Producto> lista_productos_a_comentar = new ArrayList<Producto>();
         boolean producto_agregado = false;
         Producto producto_actual;
-        
-        for(Pedido pedido_actual: usuario_actual.getLista_pedidos()){
-            if (pedido_actual.getEstado().equals("Realizado")){
-                for(PedidoProducto pedido_producto_actual: pedido_actual.getLista_pedidos_producto()){
+
+        for (Pedido pedido_actual : usuario_actual.getLista_pedidos()) {
+            if (pedido_actual.getEstado().equals("Realizado")) {
+                for (PedidoProducto pedido_producto_actual : pedido_actual.getLista_pedidos_producto()) {
                     producto_actual = pedido_producto_actual.getProducto();
-                    
-                    for(Producto producto_actual_comentar: lista_productos_a_comentar){
-                        if (producto_actual_comentar.getId() == producto_actual.getId()){
+
+                    for (Producto producto_actual_comentar : lista_productos_a_comentar) {
+                        if (producto_actual_comentar.getId() == producto_actual.getId()) {
                             producto_agregado = true;
                             break;
                         }
                     }
-                    
-                    if (producto_agregado == false){
+
+                    if (producto_agregado == false) {
                         lista_productos_a_comentar.add(producto_actual);
-                    }
-                    else{
+                    } else {
                         producto_agregado = false;
                     }
                 }
             }
         }
-        
+
         return lista_productos_a_comentar;
-               
+
     }
-    
-    public static Map<String,Float> valorPromedioYTotalVentasDia(List<Persona> personas){
-        
+
+    public static Map<String, Float> valorPromedioYTotalVentasDia(List<Persona> personas) {
+
         Map<String, Float> retorno = new HashMap<String, Float>();
         float valor_total_dia = 0;
         int contador = 0;
-        
-        
-        for (Persona persona_actual: personas){
-            for(Pedido pedido_actual : persona_actual.getLista_pedidos()){
-                if (pedido_actual.getFecha().compareTo(LocalDate.now()) == 0){
+
+        for (Persona persona_actual : personas) {
+            for (Pedido pedido_actual : persona_actual.getLista_pedidos()) {
+                if (pedido_actual.getFecha().compareTo(LocalDate.now()) == 0) {
                     valor_total_dia += pedido_actual.getValor_total();
                     contador += 1;
                 }
             }
         }
-        
-        if (contador > 0){
+
+        if (contador > 0) {
             retorno.put("promedio", (valor_total_dia / contador));
             retorno.put("total", valor_total_dia);
-            
-            return retorno;       
-        }
-        else{
-            retorno.put("promedio", (float)0);
+
+            return retorno;
+        } else {
+            retorno.put("promedio", (float) 0);
             retorno.put("total", (float) 0);
-            
-            return retorno;    
-            
+
+            return retorno;
+
         }
-        
+
     }
-    
-    public static Pedido getPedidoPendiente (Persona usuarioActual){
-        
-        for (Pedido pedido_actual: usuarioActual.getLista_pedidos()){
-            if (pedido_actual.getEstado().equals("pendiente")){
+
+    public static Pedido getPedidoPendiente(Persona usuarioActual) {
+
+        for (Pedido pedido_actual : usuarioActual.getLista_pedidos()) {
+            if (pedido_actual.getEstado().equals("pendiente")) {
                 return pedido_actual;
             }
         }
-        
+
         return null;
-        
+
     }
-    
-    public static PedidoProducto getProductoCarrito(Pedido pedido_actual, int id_producto){
-        
-        for (PedidoProducto pedido_producto_actual: pedido_actual.getLista_pedidos_producto()){
-            if (pedido_producto_actual.getProducto().getId() == id_producto){
+
+    public static PedidoProducto getProductoCarrito(Pedido pedido_actual, int id_producto) {
+
+        for (PedidoProducto pedido_producto_actual : pedido_actual.getLista_pedidos_producto()) {
+            if (pedido_producto_actual.getProducto().getId() == id_producto) {
                 return pedido_producto_actual;
             }
         }
-        
+
         return null;
 
-            
     }
-    
-    
-    
-    
-    
+
 }

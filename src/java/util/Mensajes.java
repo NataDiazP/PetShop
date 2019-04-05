@@ -43,6 +43,7 @@ public class Mensajes {
             put("error_fictional_data_txt", "Error de lectura.");
             put("register", "Registrarse");
             put("day_orders", "Resumen del dia");
+            put("orders", "Histórico de pedidos");
             put("view_details", "Ver detalles");
             put("total_day_orders", "El valor total de las ventas del dia es de: ");
             put("mean_day_orders", "El valor promedio de las ventas del dia es de: ");
@@ -59,6 +60,7 @@ public class Mensajes {
             put("comment", "Comentar");
             put("commentary", "Comentario");
             put("empty_orders", "Aún no has realizado pedidos. ¡Ve y compra!");
+            put("no_orders", "No hay pedidos realizados.");
             put("empty_wish_list", "Aún no has agregado ningun producto a tu lista. !Ve y agrega!");
             put("active", "Activo");
             put("no_comments", "Usted no ha comentado ningun producto.");
