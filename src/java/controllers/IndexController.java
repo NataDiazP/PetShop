@@ -5,7 +5,6 @@
  */
 package controllers;
 
-import static controllers.MainController.setMessages;
 import java.io.BufferedReader;
 import javax.servlet.http.HttpSession;
 import models.Empleado;
@@ -35,9 +34,7 @@ public class IndexController extends MainController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         setMessages(request);
-
         HttpSession session = request.getSession();
 
         List<Empleado> empleados = new ArrayList<Empleado>();
