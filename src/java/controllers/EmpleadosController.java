@@ -6,7 +6,13 @@
 package controllers;
 
 import static controllers.MainController.setMessages;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -65,7 +71,13 @@ public class EmpleadosController extends MainController {
 
         Empleado empleado = new Empleado(nombre, correoElectronico, telefono, direccion, password, true, admin);
         empleados.add(empleado);
-
+        
+        BufferedWriter bw=new BufferedWriter(new FileWriter("Web Pages/empleados.txt"));
+        bw.write(nombre+";"+correoElectronico+";"+password+";"+telefono+";"+direccion+";"+String.valueOf(admin)+";"+"true");
+        bw.newLine();
+        bw.flush();
+        bw.close();
+        
         session.setAttribute("Eempleados", empleados); // Guardar en sesion
         request.setAttribute("empleados", empleados); // Guardar en la vista - Asi se llama en el JSP       
 

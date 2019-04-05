@@ -36,7 +36,7 @@ public class ComprarController extends MainController {
         
         Persona personaActual = (Persona)session.getAttribute("usuarioActual");       
         
-        request.setAttribute("listaPedidos", personaActual.getLista_pedidos());       
+        request.setAttribute("listaPedidos", personaActual.misPedidosComprados());       
         
         RequestDispatcher view = request.getRequestDispatcher("misCompras.jsp");
         view.forward(request, response);
@@ -67,7 +67,7 @@ public class ComprarController extends MainController {
         pedidoPendiente.calcularValorTotal();
         pedidoPendiente.comprar();
         
-        request.setAttribute("listaPedidos", personaActual.getLista_pedidos());       
+        request.setAttribute("listaPedidos", personaActual.misPedidosComprados());       
         session.setAttribute("usuarioActual", personaActual);
         
         RequestDispatcher view = request.getRequestDispatcher("misCompras.jsp");
