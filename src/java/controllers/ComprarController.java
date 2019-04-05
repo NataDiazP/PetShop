@@ -47,9 +47,9 @@ public class ComprarController extends MainController {
 
         setMessages(request);
         HttpSession session = request.getSession();
-        
+
         List<Pedido> pedidos = new ArrayList<Pedido>();
-        
+
         if (null != session.getAttribute("Pedidos")) {
             pedidos = (ArrayList<Pedido>) session.getAttribute("Pedidos"); // Se obtienen los empleados de la sesión
         }

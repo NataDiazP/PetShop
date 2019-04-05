@@ -23,30 +23,28 @@ import models.Producto;
  */
 @WebServlet(name = "EliminarProductoCarrito", urlPatterns = {"/EliminarProductoCarrito"})
 public class EliminarProductoCarrito extends HttpServlet {
-    
-     @Override
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         setMessages(request);
         HttpSession session = request.getSession();
-        
-        Persona personaActual = (Persona)session.getAttribute("usuarioActual");
+
+        Persona personaActual = (Persona) session.getAttribute("usuarioActual");
         Pedido pedidoPendiente = Pedido.getPedidoPendiente(personaActual);
-        
+
         int idProductoEliminar = Integer.parseInt(request.getParameter("id_producto"));
         System.out.println(idProductoEliminar);
-        
-        PedidoProducto.borrarProductoDeCarritoCompras(idProductoEliminar,pedidoPendiente);
-        
+
+        PedidoProducto.borrarProductoDeCarritoCompras(idProductoEliminar, pedidoPendiente);
+
         request.setAttribute("listaCarrito", pedidoPendiente.getLista_pedidos_producto());
         session.setAttribute("usuarioActual", personaActual);
-        
+
         RequestDispatcher view = request.getRequestDispatcher("carritoCompras.jsp");
-            view.forward(request, response);       
-                
-       
+        view.forward(request, response);
+
     }
-    
 
 }

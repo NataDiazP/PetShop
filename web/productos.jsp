@@ -86,7 +86,7 @@
                             </div>
                         </div>
                     </c:if>
-                    
+
                     <c:if test="${!empty error_agg}">
                         <div class="alert alert-danger" role="alert">
                             <h4>Error - Producto ya agregado a su lista de deseos</h4>
@@ -164,7 +164,7 @@
                             </div>
                         </div>
                     </div>                
-                    
+
                 </div>
                 <!-- /.container-fluid -->
 

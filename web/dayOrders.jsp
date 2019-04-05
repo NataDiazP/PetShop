@@ -38,7 +38,7 @@
             <div id="content-wrapper">
                 <div class="container-fluid">
 
-                    <c:if test="${empty pedidos}">                                                    
+                    <c:if test="${empty no_orders}">                                                    
                         <!-- Div de ordenes del dia -->                    
                         <div class="card mb-3">
                             <div class="card-header">

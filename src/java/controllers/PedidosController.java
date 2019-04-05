@@ -43,9 +43,4 @@ public class PedidosController extends MainController {
         RequestDispatcher view = request.getRequestDispatcher("pedidos.jsp");
         view.forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
 }
