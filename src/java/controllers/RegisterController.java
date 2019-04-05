@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Persona;
+import models.Producto;
 import static util.Mensajes.mensajes;
 
 /**
@@ -41,6 +42,13 @@ public class RegisterController extends HttpServlet {
 
         setMessages(request);
         HttpSession session = request.getSession();
+        List<Producto> productos = new ArrayList<Producto>();
+
+        if (null != session.getAttribute("Productos")) {
+            productos = (ArrayList<Producto>) session.getAttribute("Productos"); // Se obtienen los empleados de la sesión
+        }
+
+        request.setAttribute("productos", productos);
 
         List<Persona> personas = new ArrayList<Persona>();
 
@@ -58,7 +66,7 @@ public class RegisterController extends HttpServlet {
 
         if (usuarioRegistrar != null) {
             session.setAttribute("usuarioActual", usuarioRegistrar);
-            RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("productos.jsp");
             view.forward(request, response);
         } else {
             request.setAttribute("mensajeErrorRegistro", mensajes.get("error_register"));

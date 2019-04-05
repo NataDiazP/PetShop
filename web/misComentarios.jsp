@@ -12,7 +12,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Petshop - Lista de deseos</title>
+        <title>${mensajes["header_text"]} - ${mensajes["comment"]}</title>
 
         <!-- Bootstrap core CSS-->
         <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">

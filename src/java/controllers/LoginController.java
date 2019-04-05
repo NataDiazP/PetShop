@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Empleado;
 import models.Persona;
+import models.Producto;
 import static util.Mensajes.mensajes;
 
 /**
@@ -49,7 +50,14 @@ public class LoginController extends MainController {
         setMessages(request);
 
         HttpSession session = request.getSession();
+        
+        List<Producto> productos = new ArrayList<Producto>();
 
+        if (null != session.getAttribute("Productos")) {
+            productos = (ArrayList<Producto>) session.getAttribute("Productos"); // Se obtienen los empleados de la sesión
+        }
+
+        request.setAttribute("productos", productos);
         String email = request.getParameter("correo");
         String password = request.getParameter("password");
 
@@ -72,7 +80,7 @@ public class LoginController extends MainController {
                 session.setAttribute("usuarioActual", usuarioActual);
                 request.setAttribute("mensajeExito", mensajes.get("success_login"));
 
-                RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("productos.jsp");
                 view.forward(request, response);
             }
 
@@ -95,7 +103,7 @@ public class LoginController extends MainController {
                 session.setAttribute("usuarioActual", usuarioActual);
                 request.setAttribute("mensajeExito", mensajes.get("success_login"));
 
-                RequestDispatcher view = request.getRequestDispatcher("dashboard.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("productos.jsp");
                 view.forward(request, response);
             } else {
                 request.setAttribute("mensajeError", mensajes.get("deactivated_employee"));
