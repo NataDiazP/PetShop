@@ -44,8 +44,8 @@ public class Mensajes {
             put("register", "Registrarse");
             put("day_orders", "Resumen del dia");
             put("view_details", "Ver detalles");
-            put("total_day_orders", "El valor total de las ventas del dia es: ");
-            put("mean_day_orders", "El valor promedio de las ventas del dia es: ");
+            put("total_day_orders", "El valor total de las ventas del dia es de: ");
+            put("mean_day_orders", "El valor promedio de las ventas del dia es de: ");
             put("confirm_logout", "¿Estás seguro de que quieres cerrar sesión?");
             put("cancel", "Cancelar");
             put("accept", "Aceptar");
@@ -59,7 +59,12 @@ public class Mensajes {
             put("comment", "Comentar");
             put("commentary", "Comentario");
             put("empty_orders", "Aún no has realizado pedidos. ¡Ve y compra!");
+            put("empty_wish_list", "Aún no has agregado ningun producto a tu lista. !Ve y agrega!");
             put("active", "Activo");
+            put("no_comments", "Usted no ha comentado ningun producto.");
+            put("my_comments", "Mis comentarios");
+            put("no_products", "Vaya, parece que no hay productos disponibles en este momento :(");
+            put("empty_shopping_cart", "Aun no has agregado productos a tu carrito. ¿Que esperas para hacerlo?");
 
 //             "welcome_menu": "\nBienvenido a Petshop \nSeleccione la opción deseada: \n\n1. Generar datos ficticios.\n2. Generar datos ficticios desde un txt.\n3. Usuarios.\n4. Salir.",
 //        "user_type": "\nSeleccione el tipo de usuario: \n\n1. Cliente.\n2. Empleado.\n3. Volver al menu principal.",
