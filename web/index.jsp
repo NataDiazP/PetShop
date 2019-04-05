@@ -46,10 +46,16 @@
                                 <button class="btn btn-primary">Generar datos ficticios</button>
                             </form>
                             <c:if test="${!empty mensajeErrorDatosFicticios}">
-                                <p class="text-danger">${mensajeErrorDatosFicticios}</p>
+                                <br>
+                                <div class="alert alert-danger" role="alert">
+                                    ${mensajeErrorDatosFicticios}
+                                </div>
                             </c:if>
                             <c:if test="${!empty mensajeExitoDatosFicticios}">
-                                <p class="text-success">${mensajeExitoDatosFicticios}</p>
+                                <br>
+                                <div class="alert alert-success" role="alert">
+                                    ${mensajeExitoDatosFicticios}
+                                </div>
                             </c:if>
                         </div>
                     </div>
@@ -64,10 +70,16 @@
                                 <button class="btn btn-primary">Generar datos ficticios TXT</button>
                             </form>
                             <c:if test="${!empty mensajeErrorDatosFicticiosTXT}">
-                                <p class="text-danger">${mensajeErrorDatosFicticiosTXT}</p>
+                                <br>
+                                <div class="alert alert-danger" role="alert">
+                                    ${mensajeErrorDatosFicticios}
+                                </div>
                             </c:if>
                             <c:if test="${!empty mensajeExitoDatosFicticiosTXT}">
-                                <p class="text-success">${mensajeExitoDatosFicticiosTXT}</p>
+                                <br>
+                                <div class="alert alert-success" role="alert">
+                                    ${mensajeExitoDatosFicticios}
+                                </div>
                             </c:if>
                         </div>
                     </div>

@@ -41,16 +41,12 @@
             <div id="content-wrapper">
 
                 <div class="container-fluid">
-                    <!-- Breadcrumbs-->
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="./dashboard">${mensajes["dashboard"]}</a>
-                        </li>
-                        <li class="breadcrumb-item active">Mis compras</li>
-                    </ol>
+
 
                     <c:if test="${empty listaPedidos}">
-                        <h3>${mensajes["empty_orders"]}</h3>
+                        <div class="alert alert-primary" role="alert">
+                            <h4>${mensajes["empty_orders"]}</h4>
+                        </div>
                     </c:if>
                     <c:if test="${!empty listaPedidos}">
                         <!-- DataTables Example -->
@@ -58,11 +54,11 @@
                             <c:if test="${(ped.getEstado() == 'Realizado')}">
                                 <div class="card mb-3">
                                     <div class="card-header">
-                                        <i class="fas fa-table"></i>
+                                        <i class="fas fa-shopping-bag"></i>
                                         Pedido # ${ped.getId()}</div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <table class="table table-bordered" width="100%" cellspacing="0">
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
@@ -91,10 +87,12 @@
                                                                 </a>                            
                                                             </td>
                                                         </tr>
-                                                    </c:forEach>
-                                                    <tr><td>Total: ${ped.getValor_total()}</td></tr>
+                                                    </c:forEach>                                                    
                                                 </tbody>
-                                            </table>
+                                            </table>        
+                                        </div>
+                                        <div class="alert alert-success" role="alert">
+                                            <h5>Total: ${ped.getValor_total()}</h5>
                                         </div>
                                     </div>
                                 </div>

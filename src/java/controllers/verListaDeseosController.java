@@ -53,12 +53,22 @@ public class verListaDeseosController extends HttpServlet {
         int idProductoAgregar = Integer.parseInt(request.getParameter("id_producto"));
         Producto productoAgregar = Producto.seleccionarProducto(idProductoAgregar, productos);
         
+        if (personaActual.validarExistenciaCarrito(idProductoAgregar) == true){
         
-        personaActual.getLista_deseos().add(productoAgregar);
-        request.setAttribute("lista_deseos", personaActual.getLista_deseos());
-        session.setAttribute("usuarioActual", personaActual);
-        RequestDispatcher view = request.getRequestDispatcher("listaDeseos.jsp");
-        view.forward(request, response);
+            personaActual.getLista_deseos().add(productoAgregar);
+            request.setAttribute("lista_deseos", personaActual.getLista_deseos());
+            session.setAttribute("usuarioActual", personaActual);
+            RequestDispatcher view = request.getRequestDispatcher("listaDeseos.jsp");
+            view.forward(request, response);
+        }
+        else{
+            
+            request.setAttribute("error_agg", "Producto ya agregado");
+            request.setAttribute("productos", productos);
+            RequestDispatcher view = request.getRequestDispatcher("productos.jsp");
+            view.forward(request, response);
+                        
+        }
             
         
                

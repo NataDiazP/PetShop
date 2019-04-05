@@ -168,5 +168,28 @@ public class Persona {
         retorno.put("mensaje", mensajes.get("product_added"));
         return retorno;
     }
+    
+    public List<Pedido> misPedidosComprados (){
+        
+        List<Pedido> pedidosRealizados = new ArrayList<Pedido>();
+        
+        for(Pedido pedido_actual: this.getLista_pedidos()){
+            if (pedido_actual.getEstado().equals("Realizado")){
+                pedidosRealizados.add(pedido_actual);
+            }
+        }
+        
+        return pedidosRealizados;
+    }
+    
+    public boolean validarExistenciaCarrito (int id_producto){
+        
+        for (Producto producto_actual : this.getLista_deseos()){
+            if (producto_actual.getId() == id_producto){
+                return false;
+            }         
+        }
+        return true;
+    }
 
 }
