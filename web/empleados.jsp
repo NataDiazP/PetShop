@@ -150,12 +150,13 @@
                                                                 </button>
                                                             </c:if>
                                                         </form><br>
+                                                        <!--                                                    
                                                         <form action="./actualizarEmpleado" method="POST">
                                                             <input type="hidden" name="id_empleado" value="${empl.getId()}" />
                                                             <button class="btn btn-primary" alt="Actualizar">
                                                                 <i class="fas fa-retweet fa-fw"></i>
                                                             </button>
-                                                        </form>
+                                                        </form>-->
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -167,19 +168,8 @@
                     </div>
                     <!-- /.container-fluid -->
                 </c:if>
-
-                <!-- Sticky Footer -->
-                <footer class="sticky-footer">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright © Your Website 2018</span>
-                        </div>
-                    </div>
-                </footer>
-
             </div>
             <!-- /.content-wrapper -->
-
         </div>
         <!-- /#wrapper -->
 
