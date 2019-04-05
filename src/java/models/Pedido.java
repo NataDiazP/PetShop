@@ -158,16 +158,19 @@ public class Pedido {
                
     }
     
-    public static Map<String,Float> valorPromedioYTotalVentasDia(){
+    public static Map<String,Float> valorPromedioYTotalVentasDia(List<Persona> personas){
         
         Map<String, Float> retorno = new HashMap<String, Float>();
         float valor_total_dia = 0;
         int contador = 0;
         
-        for (Pedido pedido_actual: Pedido.pedidos){
-            if (pedido_actual.getFecha() == LocalDate.now()){
-                valor_total_dia += pedido_actual.getValor_total();
-                contador += 1;
+        
+        for (Persona persona_actual: personas){
+            for(Pedido pedido_actual : persona_actual.getLista_pedidos()){
+                if (pedido_actual.getFecha().compareTo(LocalDate.now()) == 0){
+                    valor_total_dia += pedido_actual.getValor_total();
+                    contador += 1;
+                }
             }
         }
         

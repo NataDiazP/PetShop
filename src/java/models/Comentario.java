@@ -1,4 +1,5 @@
 package models;
+import java.util.List;
 
 public class Comentario {
     
@@ -51,6 +52,23 @@ public class Comentario {
         this.producto.getLista_comentarios().add(this);
     }
     
+    public static void eliminarComentario (int id_comentario, Persona persona_actual, List<Producto> productos){
+        for(Comentario comentario_actual: persona_actual.getLista_comentarios()){
+            if(comentario_actual.getId() == id_comentario){
+                persona_actual.getLista_comentarios().remove(comentario_actual);
+                break;
+            }
+        }
+        
+        for (Producto producto_actual: productos ){
+            for (Comentario comentario_actual : producto_actual.getLista_comentarios()){
+                if (comentario_actual.getId() == id_comentario){
+                    producto_actual.getLista_comentarios().remove(comentario_actual);
+                    return;
+                }
+            }
+        }
+    }
     
     
 }

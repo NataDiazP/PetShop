@@ -78,5 +78,17 @@ public class PedidoProducto {
         }
 
     }
+    
+    public static boolean validarExistenciaCarrito (int id_producto, Pedido pedido_pendiente){
+        
+        for (PedidoProducto itemCarritoActual: pedido_pendiente.getLista_pedidos_producto()){
+            if (itemCarritoActual.getProducto().getId() == id_producto){
+                return false;
+            }
+        }
+        
+        return true;
+        
+    }
 
 }
