@@ -31,12 +31,24 @@
                 <i class="fas fa-fw fa-star"></i>
                 <span>${mensajes["wish_list"]}</span></a>
         </li>
-    </c:if>
-    <c:if test="${sessionScope.tipoUsuario == 'empleado' and sessionScope.usuarioActual.isAdmin() == true}">
         <li class="nav-item">
+            <a class="nav-link" href="./MisComentarios">
+                <i class="fas fa-comments"></i>
+                <span>${mensajes["my_comments"]}</span></a>
+        </li>
+    </c:if>
+    <c:if test="${sessionScope.tipoUsuario == 'empleado'}">
+        <c:if test="${sessionScope.usuarioActual.isAdmin() == true}">
+            <li class="nav-item">
             <a class="nav-link" href="./empleados">
                 <i class="fas fa-fw fa-user-friends"></i>
                 <span>${mensajes["employees"]}</span></a>
-        </li>
+            </li>
+        </c:if>
+        <li class="nav-item">
+            <a class="nav-link" href="./dayOrders">
+                <i class="fas fa-dollar-sign"></i>
+                <span>${mensajes["day_orders"]}</span></a>
+        </li>    
     </c:if>
 </ul>

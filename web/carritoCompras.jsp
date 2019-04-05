@@ -41,6 +41,7 @@
             <div id="content-wrapper">
                 <div class="container-fluid">
                     <!-- DataTables Example -->
+                    <c:if test="${!empty listaCarrito}">
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-table"></i>
@@ -49,7 +50,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form action="./ComprarController" method="POST" id="comprar">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -87,6 +88,12 @@
                             </div>
                         </div>
                     </div>
+                    </c:if>
+                    <c:if test="${empty listaCarrito}">
+                        <div class="alert alert-primary" role="alert">
+                            <h4>${mensajes["empty_shopping_cart"]}</h4>
+                        </div>
+                    </c:if>
                 </div>
                 <!-- /.container-fluid -->
 

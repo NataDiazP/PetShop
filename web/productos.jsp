@@ -42,7 +42,7 @@
                     <!-- Formulario-->
                     <c:if test="${sessionScope.tipoUsuario == 'empleado'}">
                         <div class="card-header">
-                            <i class="fas fa-table"></i>
+                            <i class="fas fa-cart-plus"></i>
                             Agrega un Producto
                         </div>
                         <div class="card card-register mx-auto mb-5">
@@ -86,15 +86,26 @@
                             </div>
                         </div>
                     </c:if>
+                    
+                    <c:if test="${!empty error_agg}">
+                        <div class="alert alert-danger" role="alert">
+                            <h4>Error - Producto ya agregado a su lista de deseos</h4>
+                        </div>                  
+                    </c:if>
+                    <c:if test="${!empty error_agg_cart}">
+                        <div class="alert alert-danger" role="alert">
+                            <h4>Error - Producto ya agregado a su carrito de compras</h4>
+                        </div>                  
+                    </c:if>
 
                     <!-- DataTables Example -->
                     <div class="card mb-3">
                         <div class="card-header">
-                            <i class="fas fa-table"></i>
+                            <i class="fas fa-shopping-cart"></i>
                             Productos Disponibles en Petshop</div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -152,7 +163,8 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div>                
+                    
                 </div>
                 <!-- /.container-fluid -->
 

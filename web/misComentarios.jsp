@@ -40,17 +40,17 @@
             <div id="content-wrapper">
 
                 <div class="container-fluid">
-                    <c:if test="${empty lista_deseos}">
+                    <c:if test="${empty lista_comentarios}">
                         <div class="alert alert-primary" role="alert">
-                        <h4>${mensajes["empty_wish_list"]}</h4>
+                        <h4>${mensajes["no_comments"]}</h4>
                         </div>
                     </c:if>
-                    <c:if test="${!empty lista_deseos}">
+                    <c:if test="${!empty lista_comentarios}">
                     <!-- DataTables Example -->
                     <div class="card mb-3">
                         <div class="card-header">
                             <i class="fas fa-star"></i>
-                            ${mensajes["wish_list"]}</div>
+                            ${mensajes["my_comments"]}</div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -58,29 +58,20 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Producto</th>
-                                            <th>Descripcion</th>
-                                            <th>Valor</th>
-                                            <th>Cantidad en inventario</th>
+                                            <th>Comentario</th>
                                             <th>${mensajes["actions"]}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${lista_deseos}" var="list_dese">
+                                        <c:forEach items="${lista_comentarios}" var="list_comen">
                                             <tr>
-                                                <td>${list_dese.getId()}</td>
-                                                <td>${list_dese.getNombre()}</td>
-                                                <td>${list_dese.getDescripcion()}</td>
-                                                <td>${list_dese.getValor()}</td>
-                                                <td>${list_dese.getCantidad_inventario()}</td>
+                                                <td>${list_comen.getId()}</td>
+                                                <td>${list_comen.getProducto().getNombre()}</td>
+                                                <td>${list_comen.getDescripcion()}</td>
                                                 <td>
-                                                    <form action="./AgregarCarritoCompras" method="POST">
-                                                        <input type ="hidden" name="id_producto" value="${list_dese.getId()}"/>
-                                                        <button class="btn btn-success">
-                                                            <i class="fas fa-cart-plus fa-fw"></i>
-                                                        </button>
-                                                    </form><br>
-                                                    <form action="./EliminarProductoListaD" method="POST">
-                                                        <input type ="hidden" name="id_producto" value="${list_dese.getId()}"/>
+                                                    <form action="./MisComentarios" method="POST">
+                                                        <input type ="hidden" name="id_comentario" value="${list_comen.getId()}"/>
+                                                        <input type ="hidden" name="id_producto" value="${list_comen.getProducto().getId()}"/>
                                                         <button class="btn btn-danger" alt="Eliminar">
                                                             <i class="fas fa-minus-circle fa-fw"></i>
                                                         </button>

@@ -34,7 +34,9 @@
                 <div class="card-body">
                     
                     <c:if test="${!empty mensajeError}">
-                        <p class="text-danger">${mensajeError}</p>
+                        <div class="alert alert-danger" role="alert">
+                            ${mensajeError}
+                        </div>
                     </c:if>
                         
                     <form method="POST" action="./login">
@@ -97,7 +99,9 @@
                             </div>
                             <input class="btn btn-primary btn-block" type="submit" value="${mensajes["register"]}" />
                             <c:if test="${!empty mensajeErrorRegistro}">
-                                <br><p class="text-danger">${mensajeErrorRegistro}</p>
+                                <br><div class="alert alert-danger" role="alert">
+                                    ${mensajeErrorRegistro}
+                                    </div>
                             </c:if>
                         </form>
                     </div>
