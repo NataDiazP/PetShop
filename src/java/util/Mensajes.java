@@ -16,6 +16,16 @@ public class Mensajes {
     public static HashMap<String, String> mensajes = new HashMap<String, String>() {
         {
             put("header_text", "Petshop");
+            put("generate_dummy_data", "Generar Datos Fictios");
+            put("action","Accion");
+            put("comments","Comentarios");
+            put("subtotal","Subtotal");
+            put("my_orders", "Mis Pedidos");
+            put("cantideishon","Cantidad");
+            put("long_text","Bienvenido a la pagina Numero 1 de ventas en productos para mascotas del Valle de Aburrà");
+            put("id", "ID");
+            put("product", "Producto");
+            put("header_text_shopcar", "Petshop - Carrito De Compras");
             put("welcome_text", "¡Bienvenido a Petshop!");
             put("dashboard", "Dashboard");
             put("login", "Iniciar sesión");
@@ -43,7 +53,6 @@ public class Mensajes {
             put("error_fictional_data_txt", "Error de lectura.");
             put("register", "Registrarse");
             put("day_orders", "Resumen del dia");
-            put("orders", "Histórico de pedidos");
             put("view_details", "Ver detalles");
             put("total_day_orders", "El valor total de las ventas del dia es de: ");
             put("mean_day_orders", "El valor promedio de las ventas del dia es de: ");
@@ -60,7 +69,6 @@ public class Mensajes {
             put("comment", "Comentar");
             put("commentary", "Comentario");
             put("empty_orders", "Aún no has realizado pedidos. ¡Ve y compra!");
-            put("no_orders", "No hay pedidos realizados.");
             put("empty_wish_list", "Aún no has agregado ningun producto a tu lista. !Ve y agrega!");
             put("active", "Activo");
             put("no_comments", "Usted no ha comentado ningun producto.");
