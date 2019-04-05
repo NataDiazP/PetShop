@@ -111,7 +111,6 @@
         <script src="js/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Page level plugin JavaScript-->
-        <script src="js/chart-js/Chart.min.js"></script>
         <script src="js/datatables/jquery.dataTables.js"></script>
         <script src="js/datatables/dataTables.bootstrap4.js"></script>
 
