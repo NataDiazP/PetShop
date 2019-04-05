@@ -16,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Petshop - Empleados</title>
+        <title>${mensajes["header_text"]} - ${mensajes["employees"]}</title>
 
         <!-- Bootstrap core CSS-->
         <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">

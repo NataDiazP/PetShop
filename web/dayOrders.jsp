@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Petshop - Resumen del día</title>
+        <title>${mensajes["header_text"]}</title>
 
         <!-- Bootstrap core CSS-->
         <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -36,6 +36,7 @@
             <%@ include file="sidebar.jsp" %>
 
             <div id="content-wrapper">
+
                 <div class="container-fluid">
 
                     <c:if test="${empty no_orders}">                                                    
